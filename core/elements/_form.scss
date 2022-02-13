@@ -1,0 +1,92 @@
+.ant-form {
+  color: $body-color;
+  font-size: $form-default-font-size;
+}
+
+.ant-form-item-control {
+  color: $body-color;
+  font-size: $form-default-font-size;
+  line-height: $form-default-line-height;
+}
+
+.ant-form-explain,
+.ant-form-extra {
+  font-size: $form-default-font-size;
+}
+
+.has-error {
+  .ant-form-explain, .ant-form-split {
+    color: $brand-alert;
+  }
+  &.has-feedback .ant-form-item-children-icon {
+    color: $brand-alert;
+  }
+  
+  //select
+  .ant-select { 
+    .ant-select-selection {
+      border-color: $brand-alert;
+      &:hover {
+        border-color: $brand-alert;
+      }
+    }
+    .ant-select-open .ant-select-selection,
+    .ant-select-focused .ant-select-selection {
+      // .active($brand-alert);
+    }
+  }
+  
+  .ant-select.ant-select-auto-complete {
+    .ant-input:focus {
+      border-color: $brand-alert;
+    }
+  }
+  
+  .ant-input-group-addon .ant-select {
+    &-selection {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+  
+  // arrow and icon
+  .ant-calendar-picker-icon::after,
+  .ant-time-picker-icon::after,
+  .ant-picker-icon::after,
+  .ant-select-arrow,
+  .ant-cascader-picker-arrow {
+    color: $brand-alert;
+  }
+
+  //input
+  .ant-input {
+    &:not([disabled]), &:not(.ant-input-disabled) {
+      border-color: $brand-alert;
+      &:hover, 
+      &:focus {
+        border-color: $brand-alert;
+      }
+    }
+    &-affix-wrapper {
+      &:hover {
+        .ant-input:not(.ant-input-disabled) {
+          border-color: $brand-alert;
+        }
+      }
+    }
+  }
+  
+  //input-number, timepicker
+  .ant-input-number,
+  .ant-time-picker-input {
+    border-color: $brand-alert;
+    &-focused,
+    &:focus {
+      // .active($brand-alert);
+    }
+    &:not([disabled]):hover {
+      border-color: $brand-alert;
+    }
+  }
+}
+

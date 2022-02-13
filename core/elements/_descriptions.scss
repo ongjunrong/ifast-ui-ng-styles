@@ -1,0 +1,112 @@
+.ant-descriptions {
+  &-title {
+    margin-bottom: 10px;
+    color: fade(#000, 85%);
+    font-weight: bold;
+    font-size: $descriptions-font-size;
+    line-height: $descriptions-font-size + 0.25;
+  }
+
+  &-view {
+    width: 100%;
+    overflow: hidden;
+    border-radius: $border-radius;
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+  }
+
+  &-row {
+    > th,
+    > td {
+      padding-bottom: 16px;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &-item-label {
+    color: fade(#000, 85%);
+    font-weight: normal;
+    font-size: $descriptions-font-size;
+    line-height: $descriptions-font-size + 0.25;
+    white-space: nowrap;
+
+    &::after {
+      position: relative;
+      top: -0.5px;
+      margin: 0 8px 0 2px;
+      content: ':';
+    }
+  }
+
+  &-item-no-label {
+    &::after {
+      margin: 0;
+      content: '';
+    }
+  }
+
+  &-item-content {
+    display: table-cell;
+    color: fade($black, 65%);
+    font-size: $descriptions-font-size;
+    line-height: $descriptions-font-size + 0.25;
+  }
+
+  &-item {
+    padding-bottom: 0;
+    > span {
+      display: inline-block;
+    }
+  }
+
+  &-bordered {
+    .ant-descriptions-view {
+      border: 1px solid $border-color;
+      > table {
+        table-layout: auto;
+      }
+    }
+
+    .ant-descriptions-item-label,
+    .ant-descriptions-item-content {
+      padding: $descriptions-padding-base;
+      border-right: 1px solid $border-color;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .ant-descriptions-item-label {
+      background-color: #fafafa;
+      &::after {
+        display: none;
+      }
+    }
+
+    .ant-descriptions-row {
+      border-bottom: 1px solid $border-color;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &.ant-descriptions-middle {
+      .ant-descriptions-item-label,
+      .ant-descriptions-item-content {
+        padding: $descriptions-padding-base;
+      }
+    }
+
+    &.ant-descriptions-small {
+      .ant-descriptions-item-label,
+      .ant-descriptions-item-content {
+        padding: $descriptions-padding-sm;
+      }
+    }
+  }
+}

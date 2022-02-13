@@ -1,0 +1,50 @@
+{
+  "_from": "git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+  "_id": "ifast-ui-ng-styles@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/ifast-ui-ng-styles",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "ifast-ui-ng-styles@git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+    "name": "ifast-ui-ng-styles",
+    "escapedName": "ifast-ui-ng-styles",
+    "rawSpec": "git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+    "saveSpec": "git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+    "fetchSpec": "https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git#2d6aa7492e22a6c2f4114b3d7fde5dc85a35dea1",
+  "_spec": "ifast-ui-ng-styles@git+https://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:x-oauth-basic@github.com/itpc-urd/ifast-ui-ng-styles.git",
+  "_where": "/Users/junrong.ong/Documents/my-ifast-transfer-agent/web-backoffice/src/main/resources/app",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "iFast Angular Styles Source",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "autoprefixer": "^9.5.0",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "5.0.0"
+  },
+  "name": "ifast-ui-ng-styles",
+  "private": true,
+  "scripts": {
+    "validate": "gulp validate"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,61 @@
+//background
+.bg-light {
+    background-color: $black-1 !important;
+}
+
+.bg-white {
+    background-color: $white !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+@include bg-variant(".bg-theme", $brand-theme);
+
+@include bg-variant(".bg-primary", $brand-primary);
+
+@include bg-variant(".bg-success", $brand-success);
+@include bg-variant(".bg-info", $brand-info);
+@include bg-variant(".bg-warning", $brand-alert);
+@include bg-variant(".bg-alert", $brand-alert);
+@include bg-variant(".bg-danger", $brand-alert);
+
+@include bg-variant(".bg-accent", $brand-accent-1); // Dont use, please use .bg-accent-1 #Deprecated
+@include bg-variant(".bg-accent-1", $brand-accent-1); 
+@include bg-variant(".bg-accent-2", $brand-accent-2);
+
+@include bg-variant(".bg-fund", $brand-fund);
+@include bg-variant(".bg-stock", $brand-stock);
+@include bg-variant(".bg-etf", $brand-etf);
+@include bg-variant(".bg-bond", $brand-bond);
+@include bg-variant(".bg-map", $brand-map);
+@include bg-variant(".bg-insurance", $brand-insurance);
+@include bg-variant(".bg-ndpms", $brand-ndpms);
+@include bg-variant(".bg-dpms-cash", $brand-dpms-cash);
+@include bg-variant(".bg-research", $brand-research);
+
+@include bg-variant(".bg-black-7", $black-7);
+@include bg-variant(".bg-black-6", $black-6);
+@include bg-variant(".bg-black-5", $black-5);
+@include bg-variant(".bg-black-4", $black-4);
+@include bg-variant(".bg-black-3", $black-3);
+@include bg-variant(".bg-black-2", $black-2);
+@include bg-variant(".bg-black-1", $black-1);
+
+// For backward compibility only, please use .bg-black-x
+@include bg-variant(".bg-darkest", $black-7);
+@include bg-variant(".bg-darker", $black-6);
+@include bg-variant(".bg-dark", $black-5);
+@include bg-variant(".bg-gray", $black-4);
+@include bg-variant(".bg-light", $black-3);
+@include bg-variant(".bg-lighter", $black-2);
+@include bg-variant(".bg-lightest", $black-1);
+
+@include bg-variant(".body-bg", $body-bg);
+@include bg-variant(".body-color", $body-color);
+@include bg-variant(".link-color", $link-color);
+@include bg-variant(".link-hover-color", $link-hover-color);
+
+@include bg-variant(".bg-profit", $brand-profit);
+@include bg-variant(".bg-loss", $brand-loss);

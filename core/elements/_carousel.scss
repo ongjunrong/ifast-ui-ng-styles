@@ -1,0 +1,20 @@
+.ant-carousel {
+  .slick-slider {
+    .ant-arrow {
+      color: white;
+      font-size: 14px;
+      .next,
+      .prev {
+        position: absolute;
+        top: 50%;
+        margin-top: -7px;
+      }
+      .next {
+        right: 10px;
+      }
+      .prev {
+        left: 10px;
+      }
+    }
+  }
+}

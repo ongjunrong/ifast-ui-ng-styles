@@ -1,0 +1,140 @@
+.ant-modal-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal;
+
+    &.vertical-center-modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.ant-modal {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $body-color;
+    width: auto;
+    margin: 0 auto;
+    top: $modal-top;
+    padding-bottom: 1.5rem;
+
+    @include screen-tablet {
+        max-width: 95%;
+    }
+}    
+
+.ant-modal-content {
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: $modal-content-shadow;
+}
+
+.ant-modal-close {
+    z-index: 10;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $body-color;
+}
+
+//.ant-modal-close-x {
+
+  //  &:before {
+      //  content: "\25";
+   // }
+//}
+
+.ant-modal-header {
+    padding: $modal-header-padding;
+    border-radius: $modal-border-radius $modal-border-radius 0 0;
+    background: $modal-content-bg;
+    color: $black-5;
+    border-bottom: $modal-header-border-bottom;
+}
+
+.ant-modal-title {
+    margin: 0;
+    font-weight: $modal-title-font-weight;
+    font-size: $modal-title-font-size;
+    line-height: 1;
+    word-wrap: break-word;
+}
+
+.ant-modal-body {
+    padding: $modal-body-padding;
+    font-size: $modal-font-size;
+    line-height: $line-height-base;
+    max-height: $modal-body-min-height;
+    overflow: $modal-body-overflow;
+}
+
+.ant-modal-footer {
+    border-top: $modal-footer-border-bottom;
+    padding: $modal-footer-padding;
+    text-align: right;
+    border-radius: 0 0 $modal-border-radius $modal-border-radius;
+}
+
+.ant-modal-confirm-body {
+
+    > .anticon {
+        font-size: 22px;
+        margin-right: 1rem;
+        float: left;
+    }
+
+    .ant-modal-confirm-title {
+        color: $black-7;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: $line-height-base;
+    }
+
+    .ant-modal-confirm-content {
+        margin-left: 46px;
+        font-size: $font-size-base;
+        color: $body-color;
+        margin-top: 8px;
+    }
+}
+
+.ant-modal-confirm-success {
+
+    .ant-modal-confirm-body {
+
+        > .anticon {
+            color: $state-success-text;
+        }
+    }
+}  
+
+.ant-modal-confirm-error {
+
+    .ant-modal-confirm-body {
+
+        > .anticon {
+            color: $state-danger-text;
+        }
+    }
+}  
+
+.ant-modal-confirm-confirm,
+.ant-modal-confirm-warning {
+
+    .ant-modal-confirm-body > {
+
+        .anticon {
+            color: $state-warning-text;
+        }
+    }
+}
+
+.cdk-overlay-container {
+    z-index: $zindex-modal;
+}
+

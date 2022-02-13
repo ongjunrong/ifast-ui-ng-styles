@@ -1,0 +1,16 @@
+//Default core theme
+@import "../core/variables";
+
+//Theme Configuration
+@import "theme-config";
+
+
+//Core - Selected Styles Only
+@import "../core/mixins";
+@import "../core/elements/fonts";
+@import "../core/elements/breakpoint";
+@import "../core/elements/grid";
+
+@import "../core/utilities/background";
+@import "../core/utilities/utilities";
+@import "../core/utilities/browsers-reset";

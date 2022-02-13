@@ -1,0 +1,393 @@
+.ant-steps { 
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+}    
+.ant-steps-item-tail {
+    &:after {
+        background: $steps-tail-color;
+    }
+}
+.ant-steps-item-title {
+    width: 100%;
+}
+.ant-steps-vertical{
+    .ant-steps-item-title{
+        font-size: $step-verticle-title-size;
+            font-weight: $step-verticle-title-weight;
+    }
+} 
+.ant-steps-horizontal {
+    .ant-steps-item-content{
+        text-align: center;
+        @if $enable-step-dot-align-left{
+            text-align: left;
+        }
+
+        .ant-steps-item-title {
+            
+            font-size: $step-horizontal-title-size;
+            font-weight: $step-horizontal-title-weight;
+        }
+    }
+}
+
+
+.ant-steps-item-wait {
+
+    .ant-steps-item-icon {
+        border-color: $steps-border-color !important;
+        border: $step-border;
+
+        > .ant-steps-icon {
+            color: $steps-wait-color; // number icon
+
+            .ant-steps-icon-dot {
+                background: $step-wait-dot-color;
+            }
+        }
+    }
+
+     .ant-steps-item-content {
+
+         .ant-steps-item-description {
+            color: $step-wait-desc-color;
+        }
+
+         .ant-steps-item-title {
+            color: $step-wait-title-color;
+        }
+    }
+    
+}
+
+.ant-steps-item-process {
+    
+    .ant-steps-item-icon {
+        background-color: $step-process-bg-color;
+        background: $step-process-bg-color;
+        border-color: $step-process-border-color !important;
+        border: $step-border;
+        > .ant-steps-icon {
+
+            .ant-steps-icon-dot {
+                background: $step-process-bg-color;
+            }
+        }
+    }
+
+     .ant-steps-item-content {
+
+         .ant-steps-item-title {
+            color: $step-process-title-color;
+            font-weight: $step-process-title-font-weight;
+            
+
+            &:after {
+                background-color: $steps-border-color;
+            }
+        }
+
+         .ant-steps-item-tail {
+            &:after {
+                background-color: $steps-border-color !important;
+            }
+        }
+
+         .ant-steps-item-description {
+            color: $step-process-desc-color;
+        }
+    }
+} 
+
+.ant-steps-item-finish {
+
+    .ant-steps-item-icon {
+        border-color: $step-finish-border-color;
+        background-color: $step-finish-bg-color;
+        border: $step-border;
+        > .ant-steps-icon {
+            color: $step-finish-icon-color;
+
+            .ant-steps-icon-dot {
+                background: $step-finish-bg-color;
+            }
+        }
+    }
+   
+
+    .ant-steps-item-content {
+        .ant-steps-item-title {
+            color: $step-finish-title-color;
+            &:after {
+                background-color: $step-finish-bg-color;
+            }
+        }
+        .ant-steps-item-description {
+            color: $step-finish-desc-color;
+        }
+    }
+
+    .ant-steps-item-tail {
+        &::after {
+            background: $step-finish-bg-color !important;
+        }
+    }
+}
+
+.ant-steps-item-error {
+
+    .ant-steps-item-icon {
+        border-color: $brand-alert;
+        background-color: transparent;
+
+        > .ant-steps-icon {
+            color: $brand-alert;
+        }
+    }
+
+    > .ant-steps-item-content {
+
+        > .ant-steps-item-description,
+        > .ant-steps-item-title {
+            color:$brand-alert;
+        }
+    }
+}    
+
+.ant-steps-item {
+    .ant-steps-item-icon {
+        width: $steps-icon-size;
+        height: $steps-icon-size;
+        font-size: $steps-icon-font-size;
+        line-height: $steps-icon-size;
+        text-align: center;
+        border-radius: $steps-icon-size;
+    }
+
+    &.ant-steps-next-error {
+
+        .ant-steps-item-title {
+
+            &:after {
+                background: $brand-alert;
+            }
+        }
+    }
+}   
+
+
+// Progress dot
+.ant-steps-dot, 
+.ant-steps-dot.ant-steps-small { 
+    .ant-steps-item-tail {
+        top: $step-dot-tail-top;
+        margin: 0 0 0 $step-dot-content-margin;
+        @if $enable-step-dot-align-left{
+            margin: 0 0 0 0;
+        }
+
+        &:after {
+            width: $step-dot-tail-width;
+            height: $step-dot-tail-height;
+            margin-left: $step-dot-tail-margin-left;
+        }
+    }
+    
+    .ant-steps-item-icon {
+        width: $step-dot-size; //8px;
+        height: $step-dot-size;
+        margin-left: $step-dot-icon-margin-left;
+        @if $enable-step-dot-align-left{
+            margin-left: 0;
+        }
+        padding-right: 0;
+        line-height: $step-dot-size;
+        background: transparent;
+        border: $step-dot-border;
+    }
+    .ant-steps-item-content {
+        width: $step-dot-content-width;
+        padding-right: 10px;
+    }
+    .ant-steps-item-process{
+        .ant-steps-item-icon {
+            width: $step-dot-process-size;
+            height: $step-dot-process-size;
+            line-height: $step-dot-process-size;
+        }
+    } 
+}
+
+.ant-steps-vertical.ant-steps-dot {
+    .ant-steps-item-icon {
+      margin-top: 8px;
+      margin-left: 0;
+      background: none;
+    }
+    .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail {
+      top: 2px;
+      left: -9px;
+      margin: 0;
+      padding: 22px 0 4px;
+    }
+    .ant-steps-item:first-child .ant-steps-icon-dot {
+      left: 0;
+    }
+    .ant-steps-item-process .ant-steps-icon-dot {
+      left: -2px;
+    }
+  }
+
+
+// Mini Version
+.ant-steps-small {
+    .ant-steps-item-icon {
+        width: $steps-small-icon-size;
+        height: $steps-small-icon-size;
+        font-size: $font-size-sm;
+        line-height: $steps-small-icon-size;
+        text-align: center;
+        border-radius: $steps-small-icon-size;
+    }
+    .ant-steps-item-custom .ant-steps-item-icon {
+        width: inherit;
+        height: inherit;
+        line-height: inherit;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        > .ant-steps-icon {
+          font-size: $steps-small-icon-size;
+          line-height: 0 !important;
+          transform: none;
+        }
+    }
+}
+
+//Vertical
+@mixin steps-vertical {
+    display: block;
+    .ant-steps-item {
+      display: block;
+      overflow: visible;
+      &-icon {
+        float: left;
+        margin-right: 16px;
+  
+        // .ant-steps-rtl& {
+        //   float: right;
+        //   margin-right: 0;
+        //   margin-left: 16px;
+        // }
+      }
+      &-content {
+        display: block;
+        min-height: 48px;
+        overflow: hidden;
+      }
+    //   &-title {
+    //      line-height: @steps-icon-size;
+    //   }
+      &-description {
+        padding-bottom: 12px;
+      }
+      .ant-steps-item-icon{
+          position: relative;
+      }
+    }
+    > .ant-steps-item
+    > .ant-steps-item-container
+    > .ant-steps-item-tail {
+    position: absolute;
+    top: 0;
+    left: $steps-icon-size/2;
+    width: 1px;
+    height: 100%;
+    padding: $steps-icon-size 0 0;
+
+    // .ant-steps-rtl& {
+    //   right: 16px;
+    //   left: auto;
+    // }
+
+    &::after {
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  > .ant-steps-item:not(:last-child)
+    > .ant-steps-item-container
+    > .ant-steps-item-tail {
+    display: block;
+  }
+
+  > .ant-steps-item
+    > .ant-steps-item-container
+    > .ant-steps-item-content
+    > .ant-steps-item-title {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.ant-steps-small .ant-steps-item-container {
+    .ant-steps-item-tail {
+      position: absolute;
+      top: 0;
+      left: $steps-small-icon-size/2;
+      padding: $steps-small-icon-size 0 0;
+
+    //   .ant-steps-rtl& {
+    //     right: 12px;
+    //     left: auto;
+    //   }
+    }
+    // .ant-steps-item-title {
+    //   line-height: @steps-small-icon-size;
+    // }
+  }
+}
+
+.ant-steps-vertical {
+    @include steps-vertical();
+}
+
+// Custom icon
+.ant-steps-item-custom {
+    .ant-steps-item-icon {
+      height: auto;
+      background: none;
+      border: 0;
+      > .ant-steps-icon {
+        top: 0;
+        left: 0.5px;
+        width: $steps-icon-size;
+        height: $steps-icon-size;
+        font-size: $steps-icon-size;
+        line-height: $steps-icon-size;
+      }
+    }
+    &.ant-steps-item-process {
+      .ant-steps-item-icon > .ant-steps-icon {
+        color: $step-process-bg-color;
+      }
+    }
+}
+  
+  // Only adjust horizontal customize icon width
+.ant-steps {
+    &:not(.ant-steps-vertical) {
+        .ant-steps-item-custom {
+            .ant-steps-item-icon {
+                width: auto;
+            }
+        }
+    }
+}
+
+.bg-light{
+    .ant-steps-item-tail::after {
+        background: $black-4;
+    } 
+}

@@ -1,0 +1,86 @@
+
+//--------------------------------------------------
+// HEX to HSLA for CSS Variable
+//--------------------------------------------------
+//usage: @include toHsla(--brand-test, 220, 89%, 56% ,1);
+@mixin colorHsla($color, $hue, $saturation, $lightness ,$alpha:1){
+  #{$color}: unquote("hsla(#{$hue}, #{$saturation}, #{$lightness},#{$alpha})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness} ;
+  #{$color}-a: #{$alpha};
+}
+//--------------------------------------------------
+// Convert SCSS Variable to CSS Variable
+//--------------------------------------------------
+//usage: css(brand-primary;  //var(--brand-primary)
+@function css($scss-variable) {
+  @return var(--#{$scss-variable});
+}
+//All Varable that need to update must be decalred here.
+ $brand-primary:                  css(brand-primary) ;
+ $brand-theme:                    css(brand-theme) ;
+ $brand-success:                  css(brand-success);
+ $brand-info:                     css(brand-info);
+ $brand-alert:                    css(brand-alert);
+ $brand-profit:                   css(brand-profit);
+ $brand-loss:                     css(brand-loss);
+ $brand-accent-1:                 css(brand-accent-1);
+ $brand-accent-2:                 css(brand-accent-2);
+ $btn-gradient-start-color:       css(btn-gradient-start-color);
+ $btn-gradient-end-color:         css(btn-gradient-end-color);
+ $link-color:                     css(link-color);
+
+ $font-size-base:                 css(font-size-base);
+
+
+//List of theme name refer to this
+//https://simple.wikipedia.org/wiki/List_of_colors 
+//Color vavibale must use HSLA e.g. @include colorHsla(--brand-theme, 120, 89%, 56% ,1);
+:root{
+    @include colorHsla(--brand-theme, 120, 89%, 56% ,1);
+    @include colorHsla(--brand-primary, 120, 89%, 56% ,1);
+    @include colorHsla(--brand-success, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-info, 120, 89%, 56% ,1);
+    @include colorHsla(--brand-alert, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-profit, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-loss, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-accent-1, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-accent-2, 220, 89%, 56% ,1);
+    @include colorHsla(--btn-gradient-start-color, 220, 89%, 56% ,1);
+    @include colorHsla(--btn-gradient-end-color, 220, 89%, 56% ,1);
+    @include colorHsla(--link-color, 120, 89%, 56% ,1);
+
+    --font-size-base : 50px;
+}
+.theme-azure{
+    @include colorHsla(--brand-theme, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-primary, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-success, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-info, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-alert, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-profit, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-loss, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-accent-1, 220, 89%, 56% ,1);
+    @include colorHsla(--brand-accent-2, 220, 89%, 56% ,1);
+    @include colorHsla(--btn-gradient-start-color, 220, 89%, 56% ,1);
+    @include colorHsla(--btn-gradient-end-color, 220, 89%, 56% ,1);
+    --font-size-base : 50px;
+}
+
+.theme-gold{
+  @include colorHsla(--brand-theme, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-primary, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-success, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-info, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-alert, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-profit, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-loss, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-accent-1, 220, 89%, 56% ,1);
+  @include colorHsla(--brand-accent-2, 220, 89%, 56% ,1);
+  @include colorHsla(--btn-gradient-start-color, 220, 89%, 56% ,1);
+  @include colorHsla(--btn-gradient-end-color, 220, 89%, 56% ,1);
+  --font-size-base : 50px;
+}
+
+

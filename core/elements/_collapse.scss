@@ -1,0 +1,98 @@
+.ant-collapse {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+    line-height: $collapse-line-height;
+    color: $body-color;
+    background-color: $collapse-bg;
+    border-radius: $border-radius;
+    border: 1px solid $collapse-border;
+    border-bottom: 0;
+
+    > .ant-collapse-item {
+        border-bottom: 1px solid $collapse-border;
+
+        &:last-child {
+            border-radius: 0 0 $border-radius $border-radius;
+
+            > .ant-collapse-content {
+                border-radius: 0 0 $border-radius $border-radius;
+            }
+        }
+        
+        > .ant-collapse-header {
+            line-height: $collapse-line-height;
+            padding: $collapse-header-spacing;
+            color: $collapse-header-color;
+            font-size: $collapse-header-font-size;
+            font-weight: $collapse-header-font-weight;
+            position: relative;
+            @if $collapse-expand-icon-align-right {
+                width: 100% !important;
+            }
+
+            .ant-collapse-arrow {
+                @if $collapse-expand-icon-align-right {
+                    left: unset !important;
+                    right: 1% !important;
+                }
+            }
+            .arrow {
+                &:before {
+                    content: "\e0ad";
+                }
+            }
+        }
+    }
+
+    .ant-collapse-item-disabled {
+
+        > .ant-collapse-header {
+            cursor: not-allowed;
+            color: css-alpha($collapse-header-color, 0.25);
+
+            >.arrow {
+                cursor: not-allowed;
+                color: css-alpha($collapse-header-color, 0.25);
+            }
+        }
+    }
+}    
+
+.ant-collapse-content {
+    color: $body-color;
+    background-color: $collapse-content-background;
+    border-top: 1px solid $collapse-border;
+
+    > .ant-collapse-content-box {
+        padding: $collapse-content-spacing;
+    }
+
+    .off-gutter-x {
+        margin-left: -$collapse-content-spacing;
+        margin-right: -$collapse-content-spacing;
+    }
+    
+    .off-gutter-top {
+        margin-top: -$collapse-content-spacing;
+    }
+    
+    .off-gutter-bottom {
+        margin-bottom: -$collapse-content-spacing;
+    }
+}
+
+.ant-collapse-borderless {
+    background-color: transparent;
+    border: 0;
+    box-shadow: $collapse-borderless-box-shadow;
+
+    > .ant-collapse-item {
+
+        > .ant-collapse-content {
+            background-color: $collapse-content-background;
+            > .ant-collapse-content-box {
+                padding-top: 0.25rem;
+            }
+        }
+    } 
+}

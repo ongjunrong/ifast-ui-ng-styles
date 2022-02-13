@@ -1,0 +1,210 @@
+.ant-tabs {
+    font-family: $font-family-base;
+    font-size: $tabs-font-size;
+    line-height: $line-height-base;
+
+    &:not(.ant-tabs-vertical) {
+        > .ant-tabs-content {
+            > .ant-tabs-tabpane {
+                flex-shrink: 0;
+                width: 100%;
+                padding: $tabs-content-padding;
+                opacity: 1;
+            }
+        }
+    }
+}
+.ant-tabs-bar {
+    border-bottom: $tabs-border-width solid $tabs-border;
+    margin-bottom: $tabs-gap;
+    outline: 0;
+}
+
+.ant-tabs-nav-container {
+    font-size: $tabs-font-size;
+    line-height: $line-height-base;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: -1px;
+}
+
+.ant-tabs-tab-next,
+.ant-tabs-tab-prev {
+    z-index: 2;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    color: $tabs-arrow-color;
+    opacity: 0;
+
+    &:hover {
+        color: $tabs-arrow-color-hover;
+    }
+
+    &.ant-tabs-tab-arrow-show {
+        width: $tabs-arrow-width;
+    }
+}
+
+// .ant-tabs-tab-prev-icon {
+//     &:before {
+//         content: "\e061";
+//     }
+// }
+
+// .ant-tabs-tab-next-icon {
+//     &:before {
+//         content: "\e0ad";
+//     }
+// }
+
+.ant-tabs-tab-btn-disabled {
+    color: css-alpha($tabs-arrow-color, 0.25);
+
+    &:hover {
+        color: css-alpha($tabs-arrow-color, 0.25);
+    }
+}
+
+.ant-tabs-tab-btn-disabled {
+    cursor: not-allowed;
+}
+
+.ant-tabs-nav {
+    .ant-tabs-tab {
+        display: inline-block;
+        height: 100%;
+        margin-right: $tabs-gap;
+        padding: $tabs-toggler-padding-y $tabs-toggler-padding-x;
+        box-sizing: border-box;
+        position: relative;
+        color: $tabs-toggler-color;
+        text-transform: $tab-text-transform;
+
+        &:hover {
+            color: $tabs-theme-color;
+        }
+    }
+
+    .ant-tabs-tab-active {
+        color: $tabs-theme-color;
+        font-weight: $tabs-active-font-weight;
+    }
+
+    .ant-tabs-tab-disabled {
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.ant-tabs-ink-bar {
+    height: $tabs-border-width*1.7;
+    background-color: $tabs-theme-color;
+}
+
+.ant-tabs-large {
+    .ant-tabs-tab {
+        font-size: $tabs-toggler-lg;
+    }
+}
+
+.ant-tabs-small {
+    .ant-tabs-tab {
+        font-size: $tabs-toggler-sm;
+    }
+}
+
+//card style
+
+$tab-prefix-cls: ant-tabs;
+
+// card style
+.#{$tab-prefix-cls} {
+    &.#{$tab-prefix-cls}-card {
+        .#{$tab-prefix-cls}-card-bar {
+            .#{$tab-prefix-cls}-nav-container {
+                height: $tabs-card-height;
+            }
+
+            .#{$tab-prefix-cls}-tab {
+                height: $tabs-card-height;
+                margin-right: $tabs-card-gutter;
+                padding: 0 $tabs-card-padding;
+                line-height: $tabs-card-height - 2px;
+                background: $tabs-card-head-background;
+                color: $tabs-card-head-color;
+                border-radius: $tabs-card-border-radius $tabs-card-border-radius 0 0;
+
+                @include transition(all 0.2s ease-in-out);
+            }
+
+            .#{$tab-prefix-cls}-tab-active {
+                height: $tabs-card-height;
+                color: $tabs-card-active-color;
+                background: $tabs-card-active-background;
+                border-color: $border-color-split;
+                border-bottom: $border-width-base solid $tabs-card-active-background;
+
+                &::before {
+                    border-top: $tabs-card-tab-active-border-top;
+                }
+            }
+
+            .#{$tab-prefix-cls}-tab-disabled {
+                color: $tabs-card-head-color;
+            }
+
+            .#{$tab-prefix-cls}-tab {
+                .#{$tab-prefix-cls}-close-x {
+                    width: 16px;
+                    height: 16px;
+                    height: $tabs-font-size;
+                    margin-right: -5px;
+                    margin-left: 3px;
+                    overflow: hidden;
+                    color: $brand-info;
+                    font-size: $font-size-sm;
+
+                    &:hover {
+                        color: $black-3;
+                    }
+                }
+            }
+            .#{$tab-prefix-cls}-bottom-bar {
+                .#{$tab-prefix-cls}-tab {
+                    border-bottom: $border-width-base $border-style-base $border-color-split;
+                    border-radius: 0 0 $tabs-card-border-radius $tabs-card-border-radius;
+                }
+            }
+
+            .#{$tab-prefix-cls}-bottom-bar {
+                .#{$tab-prefix-cls}-tab-active {
+                    color: $brand-primary;
+                }
+            }
+        }
+
+        .#{$tab-prefix-cls}-extra-content {
+            .#{$tab-prefix-cls}-new-tab {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                color: $body-color;
+                font-size: 12px;
+                line-height: 20px;
+                text-align: center;
+                border: $border-width-base $border-style-base $border-color-split;
+                border-radius: $border-radius-sm;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover {
+                    color: $tabs-card-active-color;
+                    border-color: $tabs-card-active-color;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+//--------------------------------------------------
+// HEX to HSLA for CSS Variable
+//--------------------------------------------------
+//usage: @include toHsla(--brand-test, 220, 89%, 56% ,1);
+@mixin colorHsla($color, $hue, $saturation, $lightness, $alpha:1) {
+  #{$color}: unquote("hsla(#{$hue}, #{$saturation}, #{$lightness},#{$alpha})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+  #{$color}-a: #{$alpha};
+}
+
+//--------------------------------------------------
+// Convert SCSS Variable to CSS Variable
+//--------------------------------------------------
+//usage: css(brand-primary;  //var(--brand-primary)
+@function css($scss-variable) {
+  @return var(--#{$scss-variable});
+}
+
+//All Varable that need to update must be decalred here.
+$brand-primary: css(brand-primary);
+$brand-theme: css(brand-theme);
+$btn-gradient-start-color: css(brand-primary);
+$btn-gradient-end-color: css(brand-theme);
+
+//List of theme name refer to this
+//https://simple.wikipedia.org/wiki/List_of_colors 
+//Color vavibale must use HSLA e.g. @include colorHsla(--brand-theme, 120, 89%, 56% ,1);
+:root {
+  @include colorHsla(--brand-theme, 196, 100%, 27%, 1);
+  @include colorHsla(--brand-primary, 195, 64%, 41%, 1);
+  // @include colorHsla(--btn-gradient-start-color, 195, 64%, 41% ,1);
+  // @include colorHsla(--btn-gradient-end-color, 196, 100%, 27%);
+}
+
+.theme-brightblue {
+  @include colorHsla(--brand-theme, 205, 86%, 30%, 1);
+  @include colorHsla(--brand-primary, 205, 86%, 30%, 1);
+}
+
+.theme-brown {
+  @include colorHsla(--brand-theme, 34, 53%, 36%, 1);
+  @include colorHsla(--brand-primary, 34, 20%, 48%, 1);
+}
+
+.theme-darkblue {
+  @include colorHsla(--brand-theme, 228, 100%, 15%, 1);
+  @include colorHsla(--brand-primary, 228, 100%, 15%, 1);
+}
+
+.theme-darkgreen {
+  @include colorHsla(--brand-theme, 158, 49%, 11%, 1);
+  @include colorHsla(--brand-primary, 158, 49%, 11%, 1);
+}
+
+.theme-darkgrey {
+  @include colorHsla(--brand-theme, 0, 0%, 0%, 1);
+  @include colorHsla(--brand-primary, 0, 0%, 0%, 1);
+}
+
+.theme-darkred {
+  @include colorHsla(--brand-theme, 349, 100%, 10%, 1);
+  @include colorHsla(--brand-primary, 349, 100%, 10%, 1);
+}
+
+.theme-blue {
+  @include colorHsla(--brand-theme, 197, 98%, 23%, 1); //#015575
+  @include colorHsla(--brand-primary, 195, 64%, 41%, 1); //#268aab
+}
+
+.theme-green {
+  @include colorHsla(--brand-theme, 120, 100%, 15%, 1); //#004D00
+  @include colorHsla(--brand-primary, 120, 100%, 15%, 1); //#004D00
+}
+
+.theme-lightgrey {
+  @include colorHsla(--brand-theme, 0, 0%, 30%, 1); //#4D4D4D
+  @include colorHsla(--brand-primary, 0, 0%, 30%, 1); //#4D4D4D
+}
+
+.theme-orange {
+  @include colorHsla(--brand-theme, 14, 100%, 50%, 1); //#FF3C00
+  @include colorHsla(--brand-primary, 14, 100%, 50%, 1); //#FF3C00
+}
+
+//alert purple/red
+.theme-purple {
+  @include colorHsla(--brand-theme, 335, 75%, 17%, 1); //#4C0B26
+  @include colorHsla(--brand-primary, 335, 75%, 17%, 1); //#4C0B26
+}
+
+.theme-red {
+  @include colorHsla(--brand-theme, 359, 100%, 25%, 1); //#7E0002
+  @include colorHsla(--brand-primary, 359, 100%, 25%, 1); //#7E0002
+}
+
+.theme-specialred {
+  @include colorHsla(--brand-theme, 335, 75%, 17%, 1); //#4C0B26
+  @include colorHsla(--brand-primary, 335, 75%, 17%, 1); //#4C0B26
+}
+
+.theme-yellow {
+  @include colorHsla(--brand-theme, 27, 100%, 50%, 1); //#FF7501
+  @include colorHsla(--brand-primary, 27, 100%, 50%, 1); //#FF7501
+}

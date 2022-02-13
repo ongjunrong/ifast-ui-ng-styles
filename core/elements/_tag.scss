@@ -1,0 +1,129 @@
+//--------------------------------------------------
+// RGBA Tag Background (Used by tag.scss)
+//--------------------------------------------------
+//usage: @include tag-style(#ff00ff, 0.5);
+@mixin tag-style($color, $opacity: 1) {
+  color: $color;
+  border: none;
+  border-radius: 100px;
+  padding: $tag-padding-y ($tag-padding-x + 5px);
+
+  @if $opacity == 1 {
+    background: $color;
+  } @else {
+    background: css-alpha($color, $opacity);
+  }
+}
+
+$tag-loop: 
+  tag-fund $brand-fund,
+  tag-stock $brand-stock,
+  tag-etf $brand-etf,
+  tag-bond $brand-bond,
+  tag-map $brand-map,
+  tag-insurance $brand-insurance,
+  tag-ndpms $brand-ndpms,
+  tag-dpms-cash $brand-dpms-cash,
+  tag-research $brand-research;
+
+@each $tag in $tag-loop {
+  .ant-tag {
+    color: $body-color;
+    font-family: $tag-font-family;
+    font-size: $tag-font-size;
+    line-height: $tag-line-height;
+    padding: $tag-padding-y $tag-padding-x;
+    margin-right: $tag-gutter-size;
+    margin-bottom: $tag-gutter-size;
+    border-radius: $tag-border-radius;
+  
+    &.bg-fund,
+    &.bg-bond,
+    &.bg-stock,
+    &.bg-etf,
+    &.bg-map,
+    &.bg-insurance,
+    &.bg-research,
+    &.bg-ndpms {
+      color: $white;
+      border: $tag-product-border;
+    }
+  
+    &.#{nth($tag, 1)} {
+      padding: 0;
+      border-color: #{nth($tag, 2)};
+  
+      .tag-left-inner {
+        color: $white;
+        display: inline-block;
+        padding: $tag-padding-y $tag-padding-x;
+      }
+  
+      .tag-right-inner {
+        color: #{nth($tag, 2)};
+        background: $white;
+        display: inline-block;
+        padding: $tag-padding-y $tag-padding-x;
+        border-top-right-radius: $tag-border-radius;
+        border-bottom-right-radius: $tag-border-radius;
+      }
+    }
+  
+    &.tag-buy {
+      @include tag-style($brand-profit, 0.2);
+      color: $body-color;
+    }
+  
+    &.tag-sell {
+      @include tag-style($brand-loss, 0.2);
+      color: $body-color;
+    }
+  
+    &.tag-profit {
+      background: css-alpha($brand-profit, 0.2);
+      border: none;
+      border-radius: 0;
+    }
+  
+    &.tag-loss {
+      background: css-alpha($brand-loss, 0.2);
+      border: none;
+      border-radius: 0;
+    }
+  
+    .anticon {
+      line-height: 0;
+    }
+  }
+  
+  @include bg-variant(".tag-fund", $brand-fund);
+  @include bg-variant(".tag-stock", $brand-stock);
+  @include bg-variant(".tag-etf", $brand-etf);
+  @include bg-variant(".tag-bond", $brand-bond);
+  @include bg-variant(".tag-map", $brand-map);
+  @include bg-variant(".tag-insurance", $brand-insurance);
+  @include bg-variant(".tag-ndpms", $brand-ndpms);
+  @include bg-variant(".tag-dpms-cash", $brand-dpms-cash);
+  @include bg-variant(".tag-research", $brand-research);
+  
+  .cursor-default {
+    .ant-tag {
+      cursor: default;
+    }
+  }
+  
+  .mr-0 {
+    .ant-tag {
+      margin-right: 0px !important;
+    }
+  }
+}
+
+$preset-colors: pink, magenta, red, orange, yellow, gold, cyan, lime, green, blue, purple;
+
+@each $color in $preset-colors {
+  .ant-tag-#{"" + $color} {
+    color: darken($color, 10%);
+  }
+}
+

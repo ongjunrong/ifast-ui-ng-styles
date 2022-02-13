@@ -1,0 +1,62 @@
+.ant-badge {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $body-color;
+    position: relative;
+    line-height: 1;  
+}
+
+.ant-badge-count {
+    height: $badge-count-height;
+    background: $badge-count-bg;
+    color: $badge-count-color;
+    line-height: $badge-count-height;
+    padding: 0 5px;
+    font-size: $badge-count-font-size;
+    font-weight: $font-weight-normal;
+}    
+
+
+.ant-badge-status-dot {
+    width: $badge-dot-size;
+    height: $badge-dot-size;
+    border-radius: $border-radius-circle;
+    top: -1px;
+}
+
+.ant-badge-status-default {
+    background-color: $state-info-text;
+}
+
+.ant-badge-status-error {
+    background-color: $state-danger-text;
+}
+
+.ant-badge-status-success {
+    background-color: $state-success-text;
+}
+
+.ant-badge-status-warning {
+    background-color: $state-warning-text;
+}
+
+.ant-badge-status-processing {
+    background-color: $badge-dot-processing-bg;
+
+    &:after {
+        border: 1px solid $badge-dot-processing-bg;
+    }
+}
+
+.ant-badge:not(.ant-badge-status) {
+    margin-right: 20px;
+}
+
+.head-example {
+    width: 42px;
+    height: 42px;
+    border-radius: 4px;
+    background: #eee;
+    display: inline-block;
+}

@@ -1,0 +1,276 @@
+@import "./mixin";
+
+$listPrefixCls: am-list;
+
+.#{$listPrefixCls} {
+    &-header {
+        padding: $m-v-spacing-lg $m-h-spacing-lg $m-v-spacing-md $m-h-spacing-lg;
+        font-size: $m-list-header-font-size;
+        font-weight: $m-list-header-font-weight;
+        color: $m-list-header-color;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &-footer {
+        padding: $m-v-spacing-md $m-h-spacing-lg $m-v-spacing-lg $m-h-spacing-lg;
+        font-size: $m-list-header-font-size;
+        color: $m-list-header-color;
+    }
+
+    &.card {
+        .#{$listPrefixCls}-body {
+            border-radius: $m-list-border-radius;
+            @include hairline(all);
+            .#{$listPrefixCls}-item {
+                .#{$listPrefixCls}-line {
+                    @include hairline-remove(bottom);
+                    .#{$listPrefixCls}-content {
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &-body {
+        position: relative;
+        background-color: $m-fill-base;
+        
+        @include hairline(top);
+        
+        box-shadow: $m-list-box-shadow;
+
+        border-right: 0px;
+        border-left: 0px;
+        
+        .#{$listPrefixCls}-item:not(:last-child) {
+            .#{$listPrefixCls}-line {
+                @include hairline(bottom);
+            }
+        }
+    }
+
+    &:last-child {
+        .#{$listPrefixCls}-body {
+            @include hairline(bottom);
+        }
+    }
+}
+
+.#{$listPrefixCls}-item {
+    position: relative;
+    display: flex;
+    padding-left: $m-h-spacing-lg;
+    padding-right: $m-h-spacing-lg;
+    min-height: $m-list-item-min-height;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: background-color 200ms;
+    align-items: center;
+
+    .#{$listPrefixCls}-ripple {
+        position: absolute;
+        background: transparent;
+        display: inline-block;
+        overflow: hidden;
+        will-change: box-shadow, transform;
+        transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        cursor: pointer;
+        border-radius: 100%;
+        transform: scale(0);
+
+        &.#{$listPrefixCls}-ripple-animate {
+            background-color: hsla(0, 0%, 62%, 0.2);
+            animation: ripple 1s linear;
+        }
+    }
+
+    &.#{$listPrefixCls}-item-top {
+        .#{$listPrefixCls}-line {
+            align-items: flex-start;
+
+            .#{$listPrefixCls}-arrow {
+                margin-top: 2px;
+            }
+        }
+    }
+
+    &.#{$listPrefixCls}-item-middle {
+        .#{$listPrefixCls}-line {
+            align-items: center;
+        }
+    }
+
+    &.#{$listPrefixCls}-item-bottom {
+        .#{$listPrefixCls}-line {
+            align-items: flex-end;
+        }
+    }
+
+    &.#{$listPrefixCls}-item-error {
+        .#{$listPrefixCls}-line {
+            .#{$listPrefixCls}-extra {
+                color: #f50;
+
+                .#{$listPrefixCls}-brief {
+                    color: #f50;
+                }
+            }
+        }
+    }
+
+    &.#{$listPrefixCls}-item-active {
+        background-color: $m-fill-tap;
+    }
+
+    &.#{$listPrefixCls}-item-disabled {
+        .#{$listPrefixCls}-line {
+            .#{$listPrefixCls}-content,
+            .#{$listPrefixCls}-extra,
+            .#{$listPrefixCls}-brief {
+                color: $disabled-color;
+            }
+        }
+    }
+
+    img {
+        width: $m-list-item-img-width;
+        height: $m-list-item-img-height;
+        vertical-align: middle;
+    }
+
+    /* list左图片显示*/
+    .#{$listPrefixCls}-thumb {
+        &:first-child {
+            margin-right: $m-h-spacing-lg;
+        }
+
+        &:last-child {
+            margin-left: $m-h-spacing-md;
+        }
+    }
+
+    .#{$listPrefixCls}-line {
+        position: relative;
+        display: flex;
+        flex: 1;
+        align-self: stretch;
+        overflow: hidden;
+
+        /* list左侧主内容*/
+        .#{$listPrefixCls}-content {
+            flex: 1;
+            color: $m-list-item-color;
+            font-size: $m-list-item-font-size;
+            line-height: $m-list-item-line-height;
+            text-align: left;
+
+            @include ellipsis;
+
+            padding-top: $m-list-item-padding;
+            padding-bottom: $m-list-item-padding;
+        }
+
+        /* list右补充内容*/
+        .#{$listPrefixCls}-extra {
+            flex-basis: 36%;
+            color: $m-list-item-extra-color;
+            font-size: $m-list-item-extra-font-size;
+            line-height: $m-list-item-line-height;
+            text-align: right;
+
+            @include ellipsis;
+
+            padding-top: $m-list-item-padding;
+            padding-bottom: $m-list-item-padding;
+        }
+
+        .#{$listPrefixCls}-title {
+            @include ellipsis;
+        }
+
+        /* 辅助性文字*/
+        .#{$listPrefixCls}-brief {
+            color: $m-list-item-brief-color;
+            font-size: $m-list-item-brief-font-size;
+            line-height: $m-list-item-brief-line-height;
+            margin-top: $m-v-spacing-sm;
+
+            @include ellipsis;
+        }
+
+        /* list右侧箭头*/
+        .#{$listPrefixCls}-arrow {
+            display: block;
+            width: $m-icon-size-xxs;
+            height: $m-icon-size-xxs;
+            margin-left: $m-h-spacing-md;
+
+            @include encoded-svg-background(right);
+
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            visibility: hidden;
+
+            &-horizontal {
+                visibility: visible;
+            }
+
+            &-vertical {
+                visibility: visible;
+                transform: rotate(90deg);
+            }
+
+            &-vertical-up {
+                visibility: visible;
+                transform: rotate(270deg);
+            }
+        }
+
+        &-multiple {
+            padding: $m-list-item-padding 0 $m-list-item-padding 0;
+
+            .#{$listPrefixCls}-content {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .#{$listPrefixCls}-extra {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        &-wrap {
+            .#{$listPrefixCls}-content {
+                white-space: normal;
+            }
+
+            .#{$listPrefixCls}-extra {
+                white-space: normal;
+            }
+        }
+    }
+
+    select {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: 0;
+        font-size: $m-list-item-font-size;
+        appearance: none;
+        background-color: transparent;
+    }
+}
+
+@keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}

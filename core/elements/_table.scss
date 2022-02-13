@@ -1,0 +1,502 @@
+$table-prefix-cls: ant-table;
+$table-header-icon-color: #bfbfbf;
+$table-td-cls: '#{$table-prefix-cls}-td';
+$table-th-cls: '#{$table-prefix-cls}-th';
+$table-th-left-cls: '#{$table-th-cls}-left';
+$table-th-right-cls: '#{$table-th-cls}-right';
+$table-td-left-cls: '#{$table-td-cls}-left';
+$table-td-right-cls: '#{$table-td-cls}-right';
+
+@mixin table-with-border{
+    @if $enable-table-border{
+        border: $border-width-base $border-style-base $border-color-split;
+        border-radius: $table-border-radius-base;
+      } @else {
+        border: 0;
+    }
+
+}
+
+.#{$table-prefix-cls} {
+    @if $enable-table-shadow {
+        box-shadow: $table-shadow;
+        margin-left: 1px;
+    }
+    
+    table {
+        border-radius: $table-border-radius-base $table-border-radius-base 0 0;
+        font-size: $table-font-size;
+        color: $table-color;
+        background: $table-default-background;
+
+        
+    }
+
+    @include table-with-border;
+
+    &-thead > tr > th {
+        color: $table-header-color;
+        font-weight: $table-header-font-weight;
+        background: $table-header-bg;
+        border-bottom: $table-header-border-bottom;
+
+        .#{iconfont-css-prefix}-filter,
+        .#{$table-prefix-cls}-filter-icon {
+            color: $table-header-icon-color;
+            font-size: $font-size-sm;
+        }
+
+        .#{$table-prefix-cls}-filter-selected.#{iconfont-css-prefix}-filter {
+            color: $table-header-icon-selected-color;
+        }
+
+        .#{$table-prefix-cls}-column-sorter {
+            .#{$table-prefix-cls}-column-sorter-inner {
+                color: $table-header-icon-color;
+
+                .#{$table-prefix-cls}-column-sorter-up,
+                .#{$table-prefix-cls}-column-sorter-down {
+                    &.on {
+                        color: $table-header-icon-selected-color;
+                    }
+                }
+            }
+
+            &.#{$table-prefix-cls}-column-has-actions {
+                &.#{$table-prefix-cls}-column-has-filters {
+                    .#{iconfont-css-prefix}-filter,
+                    .#{$table-prefix-cls}-filter-icon {
+                        &.#{$table-prefix-cls}-filter-open {
+                            color: $table-header-filter-active-color;
+                            background: $table-header-filter-active-bg;
+                        }
+                    }
+
+                    &:hover {
+                        .#{iconfont-css-prefix}-filter,
+                        .#{$table-prefix-cls}-filter-icon {
+                            &:hover {
+                                color: $table-header-filter-active-color;
+                                background: $table-header-filter-active-bg;
+                            }
+                        }
+
+                        &:active {
+                            color: $table-header-filter-active-color;
+                        }
+                    }
+                }
+            }
+
+            &.#{$table-prefix-cls}-column-has-sorters {
+                &:hover {
+                    background: $table-header-sort-active-bg;
+
+                    .#{iconfont-css-prefix}-filter,
+                    .#{$table-prefix-cls}-filter-icon {
+                        background: $table-header-sort-active-bg;
+                    }
+                }
+
+                &:active {
+                    .#{$table-prefix-cls}-column-sorter-up:not(.on),
+                    .#{$table-prefix-cls}-column-sorter-down:not(.on) {
+                        color: $table-header-sort-active-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &-thead > tr:first-child > th {
+        &:first-child {
+            border-top-left-radius: $table-border-radius-base;
+        }
+
+        &:last-child {
+            border-top-right-radius: $table-border-radius-base;
+        }
+    }
+
+    &-tbody > tr > td {
+        border-bottom: $border-width-base $border-style-base $border-color-split;
+    }
+
+    &-thead > tr,
+    &-tbody > tr {
+        &.#{$table-prefix-cls}-row-hover,
+        &:hover {
+            &:not(.#{$table-prefix-cls}-expanded-row) > td {
+                background: $table-row-hover-bg!important;
+            }
+        }
+
+        &.#{$table-prefix-cls}-row-selected > td {
+            &.#{$table-prefix-cls}-column-sort {
+                background: $table-body-selected-sort-bg!important;
+            }
+        }
+
+        &:hover {
+            &.#{$table-prefix-cls}-row-selected > td {
+                background: $table-selected-row-hover-bg!important;
+
+                &.#{$table-prefix-cls}-column-sort {
+                    background: $table-body-selected-sort-bg!important;
+                }
+            }
+        }
+    }
+
+    &-footer {
+        padding: $table-padding-vertical $table-padding-horizontal;
+        color: $table-footer-color;
+        background: $table-footer-bg;
+        border-top: $border-width-base $border-style-base $border-color-split;
+        border-radius: 0 0 $table-border-radius-base $table-border-radius-base;
+    }
+
+    &.#{$table-prefix-cls}-bordered &-footer {
+        border: $border-width-base $border-style-base $border-color-split;
+    }
+
+    &-title {
+        padding: $table-padding-vertical 0;
+        border-radius: $table-border-radius-base $table-border-radius-base 0 0;
+    }
+
+    &.#{$table-prefix-cls}-bordered &-title {
+        padding-right: $table-padding-horizontal;
+        padding-left: $table-padding-horizontal;
+        border: $border-width-base $border-style-base $border-color-split;
+    }
+
+    @if $enable-table-border {
+        &-title {
+            padding-right: $table-padding-horizontal;
+            padding-left: $table-padding-horizontal;
+        }
+    }
+
+    &-title + &-content {
+        border-radius: $table-border-radius-base $table-border-radius-base 0 0;
+    }
+
+    &-without-column-header &-bordered &-empty &-placeholder {
+        border-top: 1px solid $border-color-split;
+        border-radius: $border-radius;
+    }
+
+    &-tbody > tr.#{$table-prefix-cls}-row-selected td {
+        color: $table-selected-row-color;
+        background: $table-selected-row-bg;
+    }
+
+    &-thead > tr > th.#{$table-prefix-cls}-column-sort {
+        background:$table-header-sort-active-bg;
+    }
+
+    &-tbody > tr > td.#{$table-prefix-cls}-column-sort {
+        background: $table-body-sort-bg;
+    }
+
+    &-thead > tr > th,
+    &-tbody > tr > td {
+        padding: $table-padding-vertical $table-padding-horizontal;
+    }
+
+    &-header {
+        background: $table-header-bg;
+    }
+
+    &-header table {
+        border-radius: $table-border-radius-base $table-border-radius-base 0 0;
+    }
+
+    &-bordered {
+        .#{$table-prefix-cls}-header > table,
+        .#{$table-prefix-cls}-body > table,
+        .#{$table-prefix-cls}-fixed-left table,
+        .#{$table-prefix-cls}-fixed-right table {
+            border: $border-width-base $border-style-base $border-color-split;
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        &.#{$table-prefix-cls}-empty {
+            .#{$table-prefix-cls}-placeholder {
+                border-right: $border-width-base $border-style-base $border-color-split;
+                border-left: $border-width-base $border-style-base $border-color-split;
+            }
+        }
+
+        .#{$table-prefix-cls}-thead > tr:not(:last-child) > th {
+            border-bottom: $border-width-base $border-style-base $border-color-split;
+        }
+
+        .#{$table-prefix-cls}-thead > tr > th,
+        .#{$table-prefix-cls}-tbody > tr > td {
+            border-right: $border-width-base $border-style-base $border-color-split;
+        }
+    }
+
+    &-placeholder {
+        padding: $table-padding-vertical $table-padding-horizontal;
+        font-size: $font-size-base;
+        text-align: center;
+        border-top: $border-width-base $border-style-base $border-color-split;
+        border-bottom: $border-width-base $border-style-base $border-color-split;
+        border-radius: 0 0 $border-radius $border-radius;
+    }
+
+    &-filter-dropdown {
+        background: $table-default-background;
+        border-radius: $border-radius;
+
+        .#{ant-prefix}-dropdown-menu {
+            border-radius: $border-radius $border-radius 0 0;
+
+            &-sub {
+                border-radius: $border-radius;
+            }
+        }
+
+        &-btns {
+            border-top: $border-width-base $border-style-base $border-color-split;
+        }
+
+        &-link {
+            color: $link-color;
+
+            &:hover {
+                color: $link-hover-color;
+            }
+
+            &:active {
+                color: $link-hover-color;
+            }
+        }
+    }
+
+    &-selection {
+        .#{iconfont-css-prefix}-down {
+            color: $table-header-icon-color;
+        }
+
+        &-menu {
+            background: $table-default-background;
+            border-radius: $border-radius;
+
+            .#{ant-prefix}-action-down {
+                color: $table-header-icon-color;
+            }
+        }
+    }
+
+    &-row {
+        &-expand-icon {
+            width: $table-row-expand-icon-size;
+            height: $table-row-expand-icon-size;
+            background: $table-default-background;
+            border: $border-width-base $border-style-base $border-color-split;
+        }
+    }
+
+    &-fixed-header > &-content > &-scroll > &-body {
+        background: $table-default-background;
+    }
+
+    // optimize header style of borderd table after hide extra scrollbar
+    &-bordered &-fixed-header &-scroll &-header {
+        &::-webkit-scrollbar {
+            border: 1px solid $border-color-split;
+        }
+    }
+}
+
+//size
+
+.#{$table-prefix-cls}-middle {
+    table {
+        font-size: $table-font-size-sm;
+    }
+    @include table-with-border;
+
+
+
+    > .#{$table-prefix-cls}-title,
+    > .#{$table-prefix-cls}-footer {
+        padding: $table-padding-vertical-md $table-padding-horizontal-md;
+    }
+
+    > .#{$table-prefix-cls}-content {
+        > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-body > table,
+        > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-body > table,
+        > .#{$table-prefix-cls}-fixed-left > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-fixed-right > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-fixed-left
+        > .#{$table-prefix-cls}-body-outer
+        > .#{$table-prefix-cls}-body-inner
+        > table,
+        > .#{$table-prefix-cls}-fixed-right
+        > .#{$table-prefix-cls}-body-outer
+        > .#{$table-prefix-cls}-body-inner
+        > table {
+            > .#{$table-prefix-cls}-thead > tr > th,
+            > .#{$table-prefix-cls}-tbody > tr > td {
+                padding: $table-padding-vertical-md $table-padding-horizontal-md;
+            }
+        }
+    }
+
+    tr.#{$table-prefix-cls}-expanded-row td > .#{$table-prefix-cls}-wrapper {
+        margin: -$table-padding-vertical-md - $table-padding-horizontal / 2 - $table-padding-vertical-md - 1px;
+    }
+}
+
+.#{$table-prefix-cls}-small {
+    table {
+        font-size: $table-font-size-xs;
+    }
+
+    @include table-with-border;
+
+    > .#{$table-prefix-cls}-title,
+    > .#{$table-prefix-cls}-footer {
+        padding: $table-padding-vertical-sm $table-padding-horizontal-sm;
+    }
+
+    > .#{$table-prefix-cls}-title {
+        top: 0;
+        border-bottom: $border-width-base $border-style-base $border-color-split;
+    }
+
+    > .#{$table-prefix-cls}-content {
+        > .#{$table-prefix-cls}-body {
+            margin: 0 $table-padding-horizontal-sm;
+        }
+
+        > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-body > table,
+        > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-body > table,
+        > .#{$table-prefix-cls}-fixed-left > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-fixed-right > .#{$table-prefix-cls}-header > table,
+        > .#{$table-prefix-cls}-fixed-left
+        > .#{$table-prefix-cls}-body-outer
+        > .#{$table-prefix-cls}-body-inner
+        > table,
+        > .#{$table-prefix-cls}-fixed-right
+        > .#{$table-prefix-cls}-body-outer
+        > .#{$table-prefix-cls}-body-inner
+        > table {
+            border: 0;
+
+            > .#{$table-prefix-cls}-thead > tr > th,
+            > .#{$table-prefix-cls}-tbody > tr > td {
+                padding: $table-padding-vertical-sm $table-padding-horizontal-sm!important;
+            }
+
+            > .#{$table-prefix-cls}-thead > tr > th {
+                background-color: $table-header-bg;
+            }
+
+            > .#{$table-prefix-cls}-thead > tr {
+                border-bottom: $border-width-base $border-style-base $border-color-split;
+            }
+
+            > .#{$table-prefix-cls}-thead > tr > th.#{$table-prefix-cls}-column-sort {
+                background-color: $table-header-sort-active-bg;
+            }
+        }
+
+        .#{$table-prefix-cls}-header {
+            background-color: $table-default-background;
+        }
+
+        .#{$table-prefix-cls}-placeholder,
+        .#{$table-prefix-cls}-row:last-child td {
+            border-bottom: 0;
+        }
+    }
+
+    tr.#{$table-prefix-cls}-expanded-row td > .#{$table-prefix-cls}-wrapper {
+        margin: -$table-padding-vertical-sm - $table-padding-horizontal / 2 - $table-padding-vertical-sm - 1px;
+    }
+
+    > .#{$table-prefix-cls}-content .#{$table-prefix-cls}-header {
+        background-color: $table-header-bg;
+    }
+}
+
+.#{$table-td-left-cls}-sticky,
+.#{$table-td-right-cls}-sticky {
+  background: $table-default-background !important;
+}
+
+.#{$table-td-left-cls}-sticky,
+.#{$table-td-right-cls}-sticky,
+.#{$table-th-left-cls}-sticky,
+.#{$table-th-right-cls}-sticky { 
+  z-index: $zindex-default + 1;
+}
+
+
+.#{table-prefix-cls}-tbody {
+  & > tr {
+    &:hover {
+      & > td {
+        &.#{$table-td-left-cls}-sticky {
+          background: $table-row-hover-bg;
+        }
+
+        &.#{$table-td-left-cls}-sticky {
+          background: $table-row-hover-bg;
+        }
+      }
+    }
+  }
+}
+
+
+
+.#{$table-prefix-cls}-middle {
+  > .#{$table-prefix-cls}-content {
+    > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-body > .cdk-virtual-scroll-content-wrapper > table {
+      > .#{$table-prefix-cls}-thead > tr > th,
+      > .#{$table-prefix-cls}-tbody > tr > td {
+        padding: $table-padding-vertical-md $table-padding-horizontal-md!important;
+      }
+    }
+  }
+}
+
+.#{$table-prefix-cls}-small {
+  &.#{$table-prefix-cls}-bordered {
+    .#{$table-prefix-cls}-thead > tr > th:last-child {
+      border-right: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  > .#{$table-prefix-cls}-content {
+    > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-header > table,
+    > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-body > table,
+    > .#{$table-prefix-cls}-scroll > .#{$table-prefix-cls}-body > .cdk-virtual-scroll-content-wrapper > table {
+      border: 0;
+
+      > .#{$table-prefix-cls}-thead > tr > th {
+        &.#{$table-th-left-cls}-sticky,
+        &.#{$table-th-right-cls}-sticky {
+             background: $table-header-bg;
+        }
+      }
+
+      > .#{$table-prefix-cls}-thead > tr > th,
+      > .#{$table-prefix-cls}-tbody > tr > td {
+        padding: $table-padding-vertical-sm $table-padding-horizontal-sm!important
+      }
+    }
+  }
+}

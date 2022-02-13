@@ -1,0 +1,78 @@
+//Misc
+@import "mixins";
+
+//Core
+@import "elements/ant-design";
+@import "elements/anticon";
+//Fonts
+@import "elements/fonts";
+
+//Reboot
+@import "elements/reboot";
+
+//Layout
+@import "elements/breakpoint";
+@import "elements/grid";
+
+//Components
+@import "elements/buttons";
+@import "elements/breadcrumb";
+@import "elements/anchor";
+@import "elements/dropdown";
+@import "elements/menu";
+@import "elements/card";
+@import "elements/tag";
+@import "elements/alert";
+@import "elements/badge";
+@import "elements/list";
+@import "elements/pagination";
+@import "elements/steps";
+@import "elements/tabs";
+@import "elements/collapse";
+@import "elements/drawer";
+@import "elements/popover";
+@import "elements/tooltip";
+@import "elements/timeline";
+@import "elements/message";
+@import "elements/modal";
+@import "elements/progress";
+@import "elements/form";
+@import "elements/input";
+@import "elements/select";
+@import "elements/date-picker";
+@import "elements/calendar";
+@import "elements/checkbox";
+@import "elements/radio";
+@import "elements/rate";
+@import "elements/slider";
+@import "elements/switch";
+@import "elements/upload";
+@import "elements/mention";
+@import "elements/table";
+@import "elements/avatar";
+@import "elements/loading";
+@import "elements/back-to-top";
+@import "elements/carousel";
+@import "elements/cascader";
+@import "elements/time-picker";
+@import "elements/tree";
+@import "elements/notification";
+@import "elements/skeleton";
+@import "elements/descriptions";
+
+//Components Mobile
+@import "elements-mobile/animate";
+@import "elements-mobile/badge";//migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/carousel";//migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/navbar"; //migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/list";//migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/tabs";//migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/tab-bar";//migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/modal"; //migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/picker"; //migrated all styles ady. Can remove ant mobile css
+@import "elements-mobile/calendar"; //migrated all styles ady. Can remove ant mobile css
+
+//Ultilities Class
+@import "utilities/background";
+@import "utilities/utilities";
+@import "utilities/browsers-reset";

@@ -1,0 +1,158 @@
+$card-prefix-cls: "ant-card";
+
+.#{$card-prefix-cls} {
+    background: $card-bg;
+    margin-bottom: $card-margin-bottom;
+    color: $body-color;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+
+    @if $enable-card-radius {
+        border-radius: $card-border-radius;
+    }
+    
+    @else {
+        border-radius: 0;
+    }
+
+    @if $enable-card-shadow {
+        box-shadow: $card-shadow;
+    }
+
+    &-hoverable {
+        &:hover {
+            border-color: $card-hover-border;
+            box-shadow: $card-hover-shadow;
+        }
+    }
+
+    &-bordered {
+        @if $enable-card-border {
+            border: $border-width-base $border-style-base $card-border-color;
+        }
+        @else {
+            border: 0;
+        }
+        
+    }
+
+    &-head {
+        min-height: $card-head-min-height;
+        padding: 0 $card-padding;
+        color: $card-head-color;
+        font-weight: $card-head-font-weight;
+        font-size: $card-head-font-size;
+        background: $card-head-bg;
+        border-bottom: $card-head-bottom-border-style;
+
+        @if $enable-card-radius {
+            border-radius: $card-border-radius $card-border-radius 0 0;
+        }
+        @else {
+            border-radius: 0;
+        }
+
+        &-title {
+            padding: $card-head-padding 0;
+        }
+    }
+
+    &-extra {
+        // https://stackoverflow.com/a/22429853/3040605
+        margin-left: auto;
+        padding: $card-head-padding 0;
+
+        color: $card-extra-color;
+
+        font-weight: normal;
+        font-size: $card-extra-font-size;
+    }
+
+    &-body {
+        padding: $card-padding;
+    }
+
+    &-grid {
+        padding: $card-padding;
+
+        &:hover {
+            box-shadow: $card-shadow;
+        }
+    }
+
+    &-cover {
+        img {
+            border-radius: $card-border-radius $card-border-radius 0 0;
+        }
+    }
+
+    &-actions {
+        background: $card-action-bg;
+        border-top: $border-width-base $border-style-base $card-border-color;
+    }
+
+    &-type-inner &-head {
+        padding: 0 $card-padding;
+        background: $card-inner-head-bg;
+
+        &-title {
+            padding: $card-inner-head-padding 0;
+            font-size: $card-inner-head-font-size;
+        }
+    }
+
+    &-type-inner &-body {
+        padding: 16px $card-padding;
+    }
+
+    &-type-inner &-extra {
+        padding: ($card-inner-head-padding + 1.5px) 0;
+    }
+
+    &-meta {
+        &-title {
+            color: $card-head-color;
+
+            $card-head-font-weight: 500;
+
+            font-size: $card-head-font-size;
+        }
+
+        &-description {
+            color: $card-meta-color;
+        }
+    }
+
+    &-fullscreen {
+        position: fixed;
+        width: 100% !important;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: $zindex-modal;
+    }
+}
+
+
+.#{$card-prefix-cls}-small {
+  > .#{$card-prefix-cls}-head {
+    min-height: $card-head-min-height-sm;
+    padding: 0 $card-padding-sm;
+    font-size: $card-head-font-size-sm;
+
+    > .#{$card-prefix-cls}-head-wrapper {
+      > .#{$card-prefix-cls}-head-title {
+        padding: $card-head-padding-sm 0;
+      }
+      > .#{$card-prefix-cls}-extra {
+        padding: $card-head-padding-sm 0;
+        font-size: $card-head-font-size-sm;
+      }
+    }
+  }
+  > .#{$card-prefix-cls}-body {
+    padding: $card-padding-sm;
+  }
+}

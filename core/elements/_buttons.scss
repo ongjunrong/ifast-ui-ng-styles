@@ -1,0 +1,413 @@
+@mixin btn-shadow{
+   -webkit-box-shadow: $btn-box-shadow;
+   -moz-box-shadow: $btn-box-shadow;
+   box-shadow: $btn-box-shadow;
+}
+
+@mixin btn-disabled {
+    &.disabled, &[disabled] {
+        color: $disabled-color !important;
+        background: $disabled-bg !important;
+        background-color: $disabled-bg !important;
+        border-color: $disabled-color !important;
+
+        &:hover,
+        &:focus {
+            color: $disabled-color !important;
+            background: $disabled-bg !important;
+            background-color: $disabled-bg !important;
+            border-color: $disabled-color !important;
+        }
+    }
+}
+
+$btn-loop: ant-btn-primary $btn-primary, ant-btn-theme $btn-theme, ant-btn-link $btn-primary, ant-btn-outline $btn-primary, ant-btn-success $btn-success, ant-btn-info $btn-primary, ant-btn-warning $btn-warning, ant-btn-danger $brand-theme, ant-btn-default $btn-primary, ant-btn-dashed $btn-primary, ant-btn-background-ghost $btn-primary;
+
+@each $btn in $btn-loop {
+    .#{nth($btn, 1)} {
+        @if $btn-with-gradient {
+            @include gradient($btn-gradient-start-color,$btn-gradient-end-color, horizontal);
+            background-color: #{nth($btn, 2)};
+        }
+        @else {
+            background-color: #{nth($btn, 2)};
+        }
+
+        border-color: #{nth($btn, 2)};
+        color: $white;
+        font-weight: $btn-font-weight;
+        text-transform: $btn-text-transform;
+        padding: 0 $btn-padding-base;
+        height: $btn-height-base;
+        line-height: $btn-line-height-base!important;
+        font-size: $btn-font-size;
+        border-style: solid; 
+        border-radius: $btn-border-radius;
+        border-width: $btn-border-width;
+        position: relative;
+        overflow: hidden;
+        transform: translate3d(0, 0, 0);
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        > span {
+            + .anticon {
+                transform: translateX($btn-padding-base / 2.5);
+            }
+        }
+
+        &.ant-btn-lg {
+            padding: 0 $btn-padding-lg;
+            height: $btn-height-lg;
+            font-size: $btn-font-size-lg;
+            line-height: $btn-line-height-lg!important;
+            border-radius: $btn-border-radius-lg;
+            > span {
+                + .anticon {
+                    transform: translateX($btn-padding-lg / 2.5);
+                }
+            }
+        }
+
+        &.ant-btn-sm {
+            padding: 0 $btn-padding-sm;
+            height: $btn-height-sm;
+            font-size: $btn-font-size-sm;
+            line-height: $btn-line-height-sm!important;
+            border-radius: $btn-border-radius-sm;
+            > span {
+                + .anticon {
+                    transform: translateX($btn-padding-sm / 2.5);
+                }
+            }
+        }
+
+        &:hover,
+        &:focus {
+            color: $white;
+            @if $btn-with-gradient {
+                @include gradient($btn-gradient-start-color,$btn-gradient-end-color, horizontal);
+            }
+            @else {
+                background-color: $btn-primary-hover-bg;
+            }
+            border-color: $btn-primary-hover-border-color;
+
+            @if $enable-shadows {
+                @include btn-shadow;
+            }
+            
+        }
+
+        @include btn-disabled;
+
+        &.ant-btn-clicked:after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            bottom: -1px;
+            right: -1px;
+            border-radius: inherit;
+            border: 0 solid #{nth($btn, 2)};
+            opacity: 0.4;
+            animation: buttonEffect 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: block;
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+    
+
+        &:active {
+            color: $white;
+            background-color: css-lightness(nth($btn, 2), -5%);
+            border-color: css-lightness(nth($btn, 2), -5%);
+            &:after {
+                transform: scale(0, 0);
+                opacity: .3;
+                transition: 0s;
+            }
+        }
+
+        &.active {
+            color: $white;
+            background-color: css-lightness(nth($btn, 2), -5%);
+            border-color: css-lightness(nth($btn, 2), -5%);
+
+            &:hover,
+            &:focus {
+                background-color: css-lightness(nth($btn, 2), -5%);
+                border-color: css-lightness(nth($btn, 2), -5%);
+            }
+        }
+
+        &:not([disabled]):not(.disabled):active,
+        &:not([disabled]):not(.disabled).active {
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        &.ant-btn-clicked {
+            &:after {
+                border-color: #{nth($btn, 2)};
+            }
+        }
+
+        &.ant-btn-theme {
+            background: $brand-theme !important;
+            color: $btn-theme-color !important;
+            border: $brand-theme !important;
+            font-weight: $btn-link-weight !important;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                background: $btn-theme-hover-bg !important;
+            }
+
+            @include btn-disabled;
+        }
+
+
+        &.ant-btn-warning {
+            background: $btn-warning !important;
+            color: $btn-warning-color !important;
+            border: $btn-warning-border !important;
+            font-weight: $btn-link-weight !important;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                background: $btn-warning-hover-bg !important;
+            }
+
+            @include btn-disabled;
+        }
+
+        &.ant-btn-success {
+            background: $btn-success !important;
+            color: $btn-success-color !important;
+            border: $btn-success-border !important;
+            font-weight: $btn-link-weight !important;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                background: $btn-success-hover-bg !important;
+            }
+
+            @include btn-disabled;
+        }
+
+        &.ant-btn-link {
+            background: transparent !important;
+            color: $btn-link-color !important;
+            border: none !important;
+            box-shadow: none !important;
+            font-weight: $btn-link-weight !important;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                background: $btn-link-hover-bg !important;
+            }
+
+            @include btn-disabled;
+        }
+
+        &.ant-btn-outline {
+            background: white !important;
+            color: $brand-primary !important;
+            border-color: $brand-primary !important;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                background: $btn-outline-hover-bg !important;
+                color: $btn-outline-hover-color !important;
+            }
+            
+            @include btn-disabled;
+        }
+
+        &.ant-btn-default, &.ant-btn-dashed &.ant-btn-background-ghost {
+            background: $btn-default-bg;
+            border-color: $btn-default-border;
+            color: $btn-default-color;
+            background-image: $btn-default-bg-image;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                border-color: $btn-default-hover-border;
+                color: $btn-default-hover-color!important;
+                background: $btn-default-hover-bg;
+            }
+
+            @include btn-disabled;
+        }
+
+        &.ant-btn-background-ghost {
+            background: white !important;
+            border-color: $btn-default-border;
+            color: $btn-default-color;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &:active {
+                border-color: $brand-primary !important;
+                color: $brand-primary !important;
+            }
+        }
+    }
+}
+
+//ant-button-href
+a {
+    &.ant-btn {
+        line-height: $btn-line-height-base - 2px;
+    }
+    &.ant-btn-sm {
+        line-height: $btn-line-height-sm - 2px;
+
+    }
+    &.ant-btn-lg {
+        line-height: $btn-line-height-lg - 2px        
+    }
+}
+
+//ant-button-group
+//
+
+.ant-btn-group {
+    .ant-btn-primary:first-child:not(:last-child) {
+        border-right-color: css-lightness($brand-primary, -5);
+    }
+
+    .ant-btn {
+        padding: 0 $btn-padding-base;
+        height: $btn-height-base;
+    }
+}
+
+.ant-btn-group-sm {
+    .ant-btn {
+        padding: 0 $btn-padding-sm;
+        height: $btn-height-sm;
+    }
+}
+
+.ant-btn-group-lg {
+    .ant-btn {
+        padding: 0 $btn-padding-lg;
+        height: $btn-height-lg;
+    }
+}
+
+//add on from ngzorro
+/////
+
+
+
+@mixin custom-button($background, $color, $border-color)
+{
+    background: $background;
+    background-color: $background;
+    border-color: $border-color!important;
+    color: $color;
+
+    &.ant-btn-lg {
+        padding: 0 $btn-padding-lg;
+        height: $btn-height-lg;
+        font-size: $btn-font-size-lg;
+    }
+
+    &.ant-btn-sm {
+        padding: 0 $btn-padding-sm;
+        height: $btn-height-sm;
+        font-size: $btn-font-size-sm;
+    }
+
+    &:hover,
+    &:focus {
+        color: $color !important;
+        background-color: $background !important;
+        border-color:$border-color !important;
+
+        @if $enable-shadows {
+            @include btn-shadow;
+        }
+    }
+
+    &.active,
+    &:active {
+        background-color: $background !important;
+        border-color:$border-color !important;
+        color: $color  !important;
+    }
+
+    @include btn-disabled;
+}
+
+
+
+.ant-btn {
+    &.highlight, &[nzHighlight]  {
+
+        @include custom-button($btn-highlight, $brand-primary, $brand-primary);
+
+        background: $btn-highlight !important;
+        padding: 0 $btn-padding-highlight;
+        height: $btn-height-highlight;
+        color: $white;
+        text-transform: uppercase;
+        font-size: $btn-font-size-lg;
+        border-radius: $btn-height-highlight; 
+        border-color: css-lightness($btn-highlight, -3%) !important;
+
+        &:hover,
+        &:focus {
+            color: $white !important;
+            background-color: css-lightness($btn-highlight, 5%) !important;
+            border-color: css-lightness($btn-highlight, 5%) !important;
+
+            @if $enable-shadows {
+                @include btn-shadow;
+            }
+        }
+
+        @include btn-disabled;
+    }
+
+    &.outline, &[nzOutline] {
+        @include custom-button(transparent, $btn-primary, $btn-primary);
+    }
+
+    &.buy, &[nzBuy] {
+        @include custom-button($brand-profit,$white, $brand-profit);
+    }
+    &.sell, &[nzSell] {
+        @include custom-button($brand-loss,$white, $brand-loss);
+    }
+}

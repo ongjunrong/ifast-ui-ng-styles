@@ -1,0 +1,144 @@
+
+.ant-menu {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    font-weight: $font-weight-semibold;
+    color: $menu-color;
+
+    &:not(.ant-menu-horizontal) {
+        .ant-menu-item-selected {
+            background-color: css-alpha($brand-info, 0.1);
+            color: $menu-item-selected-color;
+        }
+    }
+
+    .ant-dropdown-menu-item-divider {
+        height: $menu-divider-height;
+        margin: $menu-margin;
+        overflow: hidden;
+        line-height: 0;
+        background-color: $menu-divider-color;
+    }
+}
+
+.ant-menu-sub {
+    font-weight: $font-weight-normal;
+}
+
+.ant-menu-horizontal {
+    line-height: 2.8125rem;
+    border-bottom: 0px;
+
+    > .ant-menu-item-active,
+    > .ant-menu-item-open,
+    > .ant-menu-item-selected,
+    > .ant-menu-submenu-active,
+    > .ant-menu-submenu-open,
+    > .ant-menu-submenu-selected {
+        border-bottom: 0px;
+        color: $brand-info;
+    }
+
+    > .ant-menu-item,
+    > .ant-menu-submenu {
+        border-bottom: 0px;
+
+        &:hover {
+            border-bottom: 0px;
+            color: $brand-info;
+        }
+    }
+}
+
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+    border-right: 0px;
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      height: $menu-item-height;
+      margin-top: $menu-item-vertical-margin;
+      margin-bottom: $menu-item-vertical-margin;
+      padding: 0 $menu-item-vertical-padding;
+      overflow: hidden;
+      font-size: $menu-item-font-size;
+      line-height: $menu-item-height;
+      text-overflow: ellipsis;
+    }
+    .ant-menu-submenu {
+        > .ant-menu-submenu-title {
+            height: $menu-item-height;
+            line-height: $menu-item-height;
+        }
+    }
+    .ant-menu-item {
+        &:hover {
+            color: $menu-item-hover-color;
+        }
+    }
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title {
+    &:active {
+        color: $brand-info;
+
+        background-color: css-alpha($brand-info, 0.1);
+    }
+}
+
+.ant-menu-item {
+    .anticon {
+        min-width: $font-size-sm;
+        margin-right: 0;
+        font-size: $font-size-sm;
+    }
+}
+
+.ant-menu-submenu-inline,
+.ant-menu-submenu-vertical-left,
+.ant-menu-submenu-vertical-right,
+.ant-menu-submenu-vertical {
+    > .ant-menu-submenu-title {
+        &:hover {
+            .ant-menu-submenu-arrow {
+                &:after,
+                &:before {
+                    background: linear-gradient(to right, $brand-primary, $brand-primary);
+                }
+            }
+        }
+    }
+
+    .ant-menu-item {
+        &:after {
+            border-right: 3px solid $brand-info;
+        }
+    }
+}
+
+.ant-menu-dark {
+    background-color: $menu-dark-bg;
+    color: $menu-dark-text;
+
+    .ant-menu-sub {
+        background-color: $menu-dark-bg;
+        color: $menu-dark-text;
+    }
+
+    .ant-menu-inline {
+        &.ant-menu-sub {
+            background-color: $menu-dark-bg-sub;
+            box-shadow: none;
+        }
+    }
+
+    .ant-menu-item, .ant-menu-item-group-title, .ant-menu-item > a {
+        color: $menu-dark-text;
+    }
+}
+
+.ant-layout-sider {
+    background: $menu-dark-bg;
+}

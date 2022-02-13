@@ -1,0 +1,568 @@
+@mixin placeholderFloat {
+  & ~.ant-label-placeholder {
+    transform: $select-transform;
+    padding: 0px 5px;
+    color: $input-color-placeholder;
+    transform-origin: -10px;
+    line-height: 1;
+
+    @if(type_of($input-font-size-base) == 'string') {
+      top: calc(-1*(#{$input-font-size-base}*.8/2));
+    }
+    @else {
+      top: -($input-font-size-base*.8/2);
+    }
+
+    @if $enable-inner-input-placeholder {
+      top: $input-padding-y - 3px;
+    }
+  
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background-color: $input-bg;
+      left: 0;
+      top: calc(50% - -1px);
+      z-index: -1;
+    }
+  }
+}
+
+@mixin placeholderFloatLg {
+  & ~.ant-label-placeholder {
+    transform: $select-transform;
+    padding: 0px 5px;
+    color: $input-color-placeholder;
+    transform-origin:  -10px;
+    line-height: 1;
+
+    @if(type_of($input-font-size-base) == 'string') {
+      top: calc(-1*(#{$input-font-size-base}*.8/2));
+    }
+    @else {
+      top: -($input-font-size-base*.8/2);
+    }
+
+    @if $enable-inner-input-placeholder {
+      top: $input-padding-y - 3px;
+    }
+  
+  }
+
+  &:before {
+    top: calc(50% - 1px);
+  }
+}
+
+@mixin inputLg {
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  height: $input-height-lg;
+  font-size: $input-font-size-lg;
+  border-radius: $input-border-radius-lg;
+}
+
+.ant-input, textarea {
+  @include placeholder {
+    color: $input-color-placeholder
+  }
+}
+
+.ant-input , .ant-input-sm, .ant-time-picker-input {
+  font-family: $font-family-base;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $input-font-size-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  height: $input-height-base;
+  border: 1px solid $input-border-color;
+  background-color: $input-bg;
+  border-radius: $input-border-radius;
+  // @if $enable-inner-input-placeholder {
+  //   padding-bottom: 0;
+
+  // }
+
+
+  &:hover,
+  &:focus {
+    &:not([disabled]) {
+      border-color: $input-border-focus;
+    }
+  }
+
+  &:focus {
+    &:not([disabled]) {
+      ////original//// box-shadow: 0 0 0 2px rgba($input-border-focus,0.2);
+      box-shadow: $input-box-shadow-focus;
+    }
+  }
+
+  &.ant-input-disabled {
+    &:hover,
+    &:focus {
+      border-color: $input-border-color;
+    }
+  }
+
+  & ~ .ant-input-prefix,
+  & ~ .ant-input-suffix {
+    &:not(.anticon) {
+      .ant-input-search-button {
+        height: $select-height;
+      }
+    }
+  }
+
+  &:disabled {
+    background-color: $input-bg-disabled;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: $input-border-color;
+    }
+  }
+}
+
+.ant-input-disabled {
+  background-color: $input-bg-disabled;
+  cursor: not-allowed;
+
+  &:hover {
+    border-color: $input-border-color;
+  }
+}
+//remove small input
+//large input
+.ant-input-lg {
+  @include inputLg();
+
+  & ~ .ant-input-prefix,
+  & ~ .ant-input-suffix {
+    &:not(.anticon) {
+      .ant-input-search-button {
+        height: $select-height-lg;
+      }
+    }
+  }
+}
+
+.ant-time-picker-large {
+  .ant-time-picker-input {
+    @include inputLg();
+  }
+}
+
+.ant-input-group {
+    font-family: $font-family-base;
+
+    > .ant-input-cover {
+      > .ant-input {
+          @include placeholder {
+            color: $input-color-placeholder
+          }
+      }
+    }  
+
+    > .ant-input-cover {
+        &:first-child {
+            > .ant-input {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &:last-child {
+          > .ant-input {
+              border-bottom-left-radius: 0;
+              border-top-left-radius: 0;
+          }
+        }
+
+        &:only-child {
+          > .ant-input {
+            border-radius: $input-border-radius;
+          }
+        }
+        
+        &:not(:first-child):not(:last-child) { 
+            > .ant-input {
+              border-radius: 0;
+            }
+        }
+    }
+
+    &.ant-input-group-compact { 
+      .has-error {
+        .ant-select-selection{
+          border-right-width: 1px;
+        }
+      }
+
+      >.ant-input-group-wrapper .ant-input-group .ant-input,
+      >.ant-input-group .ant-select>.ant-select-selection {
+        border-radius: 0;
+        border-right-width: 1px;
+      }
+      // Input group form item
+      >.ant-form-item {
+        .ant-input-group-wrapper .ant-input-group .ant-input, 
+        .ant-select>.ant-select-selection, 
+        .ant-calendar-picker .ant-input {
+          border-radius: 0;
+          border-right-width: 1px;
+        }
+      }
+
+      >.ant-input-group-wrapper:first-child .ant-input-group .ant-input-cover .ant-input,
+      >.ant-input-group:first-child .ant-select>.ant-select-selection {
+        border-top-left-radius: $input-border-radius;
+        border-bottom-left-radius: $input-border-radius;
+      }
+      // Input group form item
+      >.ant-form-item:first-child {
+        .ant-input-group-wrapper .ant-input-group .ant-input-cover .ant-input, 
+        .ant-select>.ant-select-selection {
+          border-top-left-radius: $input-border-radius;
+          border-bottom-left-radius: $input-border-radius;
+        }
+      }
+
+  
+      >.ant-input-group-wrapper:last-child .ant-input-group .ant-input-cover .ant-input,
+      >.ant-input-group-wrapper:nth-last-child(2)[nz-tooltip] .ant-input-group .ant-input-cover .ant-input,
+      >.ant-input-group:last-child .ant-select>.ant-select-selection {
+        border-top-right-radius: $input-border-radius;
+        border-bottom-right-radius: $input-border-radius;
+        border-right-width: 1px;
+      }
+      // Input group form item
+      >.ant-form-item {
+        &:last-child {
+          .ant-input-group-wrapper .ant-input-group .ant-input-cover .ant-input,
+          .ant-select>.ant-select-selection {
+            border-top-right-radius: $input-border-radius;
+            border-bottom-right-radius: $input-border-radius;
+            border-right-width: 1px;
+          }
+        }
+        &:nth-last-child(2) {
+          .ant-input-group-wrapper[nz-tooltip] .ant-input-group .ant-input-cover .ant-input {
+            border-top-right-radius: $input-border-radius;
+            border-bottom-right-radius: $input-border-radius;
+            border-right-width: 1px;
+          }
+        }
+      }
+
+      >.ant-input-group .ant-select, 
+      >.ant-form-item .ant-input-group .ant-select {
+        margin-top: 1px;
+        width: 100%;
+      }
+    }
+
+    &.rounded-circle {
+      &.ant-input-group-compact {
+        >*:first-child,
+        >.ant-select:first-child>.ant-select-selection,
+        >.ant-calendar-picker:first-child .ant-input,
+        >.ant-select-auto-complete:first-child .ant-input,
+        >.ant-cascader-picker:first-child .ant-input,
+        >.ant-mention-wrapper:first-child .ant-mention-editor,
+        >.ant-time-picker:first-child .ant-time-picker-input,
+        >.ant-input-group .ant-input {
+          border-top-left-radius: 50px;
+          border-bottom-left-radius: 50px;
+        }
+
+        >*:last-child, 
+        >.ant-select:last-child>.ant-select-selection, 
+        >.ant-calendar-picker:last-child .ant-input, 
+        >.ant-select-auto-complete:last-child .ant-input, 
+        >.ant-cascader-picker:last-child .ant-input, 
+        >.ant-mention-wrapper:last-child .ant-mention-editor, 
+        >.ant-time-picker:last-child .ant-time-picker-input,
+        >.ant-input-group .ant-input {
+          border-top-right-radius: 50px;
+          border-bottom-right-radius: 50px;
+        }
+      }
+    }
+}
+
+.ant-input-group-addon {
+  border: 1px solid $input-border-color;
+  background-color: $black-1;
+  color: $body-color;
+}
+
+textarea {
+  &.ant-input {
+    min-height: $textarea-min-height;
+  }
+}
+
+.ant-input-number {
+  font-family: $font-family-base;
+  border: 1px solid $input-border-color;
+  line-height: $input-line-height;
+  height: $select-height;
+  color: $body-color;
+  font-size: $input-font-size-base;
+
+  &:hover,
+  &:focus {
+    border-color: $input-border-focus;
+  }
+
+  &.ant-input-number-disabled {
+    &:hover,
+    &:focus {
+      border-color: $input-border-color;
+    }
+  }
+}
+
+.ant-input-number-input {
+  height: $select-height - 2px;
+}
+
+.ant-input-number-lg,.ant-input-number-sm  {
+  height: $select-height-lg;
+
+  .ant-input-number-input {
+    height: $select-height-lg - 2px;
+  }
+}
+
+.ant-input-number-handler-wrap {
+  border-left: 1px solid $input-border-color;
+}
+
+.ant-input-number-handler {
+  &:hover {
+    .ant-input-number-handler-down-inner,
+    .ant-input-number-handler-up-inner {
+      color: $brand-info;
+    }
+  }
+
+  &:active {
+    background-color: $black-1;
+  }
+}
+
+.ant-input-number-handler-up-inner {
+  &:before {
+    content: "\e0ee";
+  }
+}
+
+.ant-input-number-handler-down-inner {
+  &:before {
+    content: "\e00b";
+  }
+}
+
+.ant-input-number-handler-down {
+  border-top: 1px solid $input-border-color;
+}
+
+.ant-input-number-focused {
+  border-color: $input-border-focus;
+}
+
+.ant-input-affix-wrapper {
+  &:hover {
+    .ant-input {
+      &:not(.ant-input-disabled) {
+        border-color: $input-border-focus;
+      }
+    }
+  }
+  
+  .ant-input-prefix,
+  .ant-input-suffix {
+    z-index: $zindex-default;
+    color: $input-color-placeholder;
+  }
+  
+  >.ant-input-cover {
+        &:not(:last-child) {
+            .ant-input {
+                padding-right: $input-prefix-padding;
+            }
+
+            .ant-label-placeholder {
+                padding-right: $input-padding-x;
+            }
+        }
+
+        &:not(:first-child) {
+            .ant-input {
+                padding-left: $input-prefix-padding; 
+            }
+
+            .ant-label-placeholder {
+                padding-left: $input-padding-x;
+            }
+        }
+    }
+}
+
+.ant-form-item-required {
+  &:before {
+    color: $input-error-color;
+  }
+}
+.ant-input-prefix,
+.ant-input-wrapper {
+
+    .ant-label-placeholder {
+        position: absolute;
+        left: $input-padding-x;
+        top: $input-height-base/4; 
+       // top: $input-height-base/2 - $input-placeholder-font-size*$input-line-height/2;
+        font-size: $input-placeholder-font-size;
+        line-height: $input-line-height;
+        color: $input-color-placeholder;
+        z-index: $zindex-default;
+        pointer-events: none;
+        transition: transform .15s cubic-bezier(.25,.8,.25,1),color .15s cubic-bezier(.25,.8,.25,1),width .15s cubic-bezier(.25,.8,.25,1);
+    }
+
+    .ant-input-cover{
+        position: relative;
+
+        .ant-input-has-value{
+          @if $enable-inner-input-placeholder {
+            padding-bottom: 0;
+            padding-top: $input-padding-y +5;
+          }
+        }
+    }
+
+    .ant-input {
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:not([disabled]),
+        &:not(.ant-input-disabled) {
+            
+            &:focus {
+              @include placeholderFloat()
+            }
+            
+            &:focus {
+                & ~.ant-label-placeholder {
+                    color: $input-border-focus;
+                    background-color: $input-bg-placeholder;
+                    @if $enable-inner-input-placeholder {
+                      background-color: $input-bg;
+                    }
+                }
+            }
+
+            &.ant-input-has-value {
+                & ~.ant-label-placeholder {
+                    color: $input-color-placeholder;
+                    background-color: $input-bg-placeholder;
+                    @if $enable-inner-input-placeholder {
+                      background-color: $input-bg;
+                    }
+                  
+                }
+                &:focus {
+                    & ~.ant-label-placeholder {
+                        color: $input-border-focus;
+                    }
+                }
+            }    
+        }
+
+        &.ant-input-has-value {
+          @include placeholderFloat() 
+        }
+    }
+}
+
+.ant-input-group-wrapper,
+.ant-input-group-wrapper-sm {
+  &.has-error {
+    .ant-input-wrapper  {
+      .ant-input-cover {
+        .ant-input {
+          border-right-width: 1px;
+          border-color: $brand-alert;
+        }
+      }
+    }
+  }
+}
+
+.ant-input-group-wrapper-lg {
+
+  .ant-input-prefix,
+  .ant-input-wrapper {
+    
+    .ant-label-placeholder {
+      left: $input-padding-x-lg;
+
+      @if(type_of($input-font-size-base) == 'string') {
+        top: calc(#{$input-height-lg}/2 - #{$input-placeholder-font-size-lg}*#{$input-line-height}/2);
+      }
+      @else {
+        top: $input-height-lg/2 - $input-placeholder-font-size-lg*$input-line-height/2;
+      }
+
+      line-height: $input-line-height;
+      font-size: $input-placeholder-font-size-lg;
+    }  
+
+    .ant-input {
+      &::placeholder {
+          color: transparent;
+      }
+
+      &:not([disabled]),
+      &:not(.ant-input-disabled) {
+          
+        &:focus {
+          @include placeholderFloatLg()
+        }
+
+        &:focus {
+            & ~.ant-label-placeholder {
+                color: $input-border-focus;
+                background-color: $input-bg-placeholder;
+                @if $enable-inner-input-placeholder {
+                  background-color: $input-bg;
+                }
+            }
+        }
+
+        &.ant-input-has-value {
+            & ~.ant-label-placeholder {
+                color: $input-color-placeholder;
+                background-color: $input-bg-placeholder;
+                @if $enable-inner-input-placeholder {
+                  background-color: $input-bg;
+                }
+            }
+            &:focus {
+                & ~.ant-label-placeholder {
+                    color: $input-border-focus;
+                }
+            }
+        }  
+      }
+
+      &.ant-input-has-value {
+        @include placeholderFloatLg()
+      }
+    }  
+  }
+}

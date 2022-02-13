@@ -1,0 +1,73 @@
+//--------------------------------------------------
+// HEX to HSLA for CSS Variable
+//--------------------------------------------------
+//usage: @include toHsla(--brand-test, 220, 89%, 56% ,1);
+@mixin colorHsla($color, $hue, $saturation, $lightness, $alpha: 1) {
+  #{$color}: unquote("hsla(#{$hue}, #{$saturation}, #{$lightness},#{$alpha})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+  #{$color}-a: #{$alpha};
+}
+
+//--------------------------------------------------
+// Convert SCSS Variable to CSS Variable
+//--------------------------------------------------
+//usage: css(brand-primary;  //var(--brand-primary)
+@function css($scss-variable) {
+  @return var(--#{$scss-variable});
+}
+
+//All Varable that need to update must be convert to css variable here.
+$brand-primary: css(brand-primary);
+$brand-theme: css(brand-theme);
+$brand-info: css(brand-info);
+$btn-gradient-start-color: css(btn-gradient-start-color);
+$btn-gradient-end-color: css(btn-gradient-end-color);
+$component-selected-color: css(component-selected-color);
+
+$font-size-base: css(font-size-base);
+$font-size-xxl: css(font-size-xxl);
+$font-size-xl: css(font-size-xl);
+$font-size-lg: css(font-size-lg);
+$font-size-md: css(font-size-md);
+$font-size-sm: css(font-size-sm);
+$font-size-xs: css(font-size-xs);
+
+//List of theme name refer to this
+//https://simple.wikipedia.org/wiki/List_of_colors
+//Color vavibale must use HSLA e.g. @include colorHsla(--brand-theme, 120, 89%, 56% ,1);
+:root {
+  @include colorHsla(--brand-theme, 197, 98%, 23%, 1);
+  @include colorHsla(--brand-primary, 196, 65%, 39%, 1);
+  @include colorHsla(--brand-info, 209, 68%, 35%, 1);
+  --btn-gradient-start-color: var(--brand-primary);
+  --btn-gradient-end-color: var(--brand-info);
+  --component-selected-color: hsl(var(--brand-primary-h), var(--brand-primary-s), 92%); //lighten primary
+
+  --font-size-base: 16px;
+  --font-size-xxl: 44px;
+  --font-size-xl: 32px;
+  --font-size-lg: 24px;
+  --font-size-md: 19px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+}
+
+.theme-igm {
+  @include colorHsla(--brand-theme, 202, 84%, 32%, 1);
+  @include colorHsla(--brand-primary, 202, 72%, 42%, 1);
+  @include colorHsla(--brand-info, 198, 100%, 22%, 1);
+  --btn-gradient-start-color: var(--brand-primary);
+  --btn-gradient-end-color: var(--brand-theme);
+  --component-selected-color: hsl(var(--brand-primary-h), var(--brand-primary-s), 92%); //lighten primary
+}
+
+.theme-igp {
+  @include colorHsla(--brand-theme, 330, 3%, 13%, 1);
+  @include colorHsla(--brand-primary, 39, 37%, 54%, 1);
+  @include colorHsla(--brand-info, 39, 37%, 36%, 1);
+  --btn-gradient-start-color: #b5975e;
+  --btn-gradient-end-color: #dbb876;
+  --component-selected-color: hsl(var(--brand-primary-h), var(--brand-primary-s), 92%); //lighten primary
+}

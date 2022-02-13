@@ -1,0 +1,51 @@
+$m-tag-padding-x: 15px;
+$tag-height: 25px;
+$tag-background-color: $white;
+$tag-active-color: $brand-theme;
+
+$tag-sm-padding-x: 5px;
+$tag-sm-height: 17px;
+
+.#{am-tag} {
+  font-size: $font-size-base - 1;
+  padding: 0 $m-tag-padding-x;
+  height: $tag-height;
+  line-height: $tag-height;
+
+  &-small {
+    height: $tag-sm-height !important;
+    padding: 0 $tag-sm-padding-x !important;
+    line-height: $tag-sm-height !important;
+    font-size: $font-size-base - 6;
+  }
+
+  &-normal {
+    background-color: $tag-background-color;
+    color: $black-4;
+  }
+
+  &-active {
+    background-color: $tag-background-color;
+    color: $tag-active-color;
+    border: 1px solid $tag-active-color;
+  }
+
+  &-disabled {
+    color: $disabled-color;
+    background-color: $disabled-bg;
+    border: 1px solid  $disabled-bg;
+  }
+
+  &-close {
+    position: absolute;
+    color: $input-color-placeholder;
+
+    &-active {
+      color: $black-6;
+    }
+
+    .am-icon {
+      background-color: $tag-background-color;
+    }
+  }
+}

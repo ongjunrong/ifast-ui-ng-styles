@@ -1,0 +1,208 @@
+html {
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+}
+
+a {
+  color: $link-color;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+@mixin heading($size, $color, $weight, $line-height) {
+  font-size: $size;
+  font-family: $font-family-heading;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+}
+
+.h1,
+h1 {
+  @include heading($heading-size-h1, $heading-color-h1, $heading-weight-h1, $heading-line-height-h1);
+  @include screen-tablet{
+    @include heading($m-heading-size-h1, $heading-color-h1, $heading-weight-h1, $heading-line-height-h1);
+  }
+}
+
+.h2,
+h2 {
+  @include heading($heading-size-h2, $heading-color-h2, $heading-weight-h2, $heading-line-height-h2);
+  @include screen-tablet{
+    @include heading($m-heading-size-h2, $heading-color-h2, $heading-weight-h2, $heading-line-height-h2);
+  }
+}
+
+.h3,
+h3 {
+  @include heading($heading-size-h3, $heading-color-h3, $heading-weight-h3, $heading-line-height-h3);
+  @include screen-tablet{
+    @include heading($m-heading-size-h3, $heading-color-h3, $heading-weight-h3, $heading-line-height-h3);
+  }
+}
+
+.h4,
+h4 {
+  @include heading($heading-size-h4, $heading-color-h4, $heading-weight-h4, $heading-line-height-h4);
+  @include screen-tablet{
+    @include heading($m-heading-size-h4, $heading-color-h4, $heading-weight-h4, $heading-line-height-h4);
+  }
+}
+
+.h5,
+h5 {
+  @include heading($heading-size-h5, $heading-color-h5, $heading-weight-h5, $heading-line-height-h5);
+  @include screen-tablet{
+    @include heading($m-heading-size-h5, $heading-color-h5, $heading-weight-h5, $heading-line-height-h5);
+  }
+}
+
+.h6,
+h6 {
+  @include heading($heading-size-h6, $heading-color-h6, $heading-weight-h6, $heading-line-height-h6);
+  @include screen-tablet{
+    @include heading($m-heading-size-h6, $heading-color-h6, $heading-weight-h6, $heading-line-height-h6);
+  }
+}
+
+.text-xs {
+  font-size: $font-size-xs !important;
+  @include screen-tablet{
+    font-size: $m-font-size-xs !important;
+  }
+}
+
+.text-sm {
+  font-size: $font-size-sm !important;
+  @include screen-tablet{
+    font-size: $m-font-size-sm !important;
+  }
+}
+
+.text-base {
+  font-size: $font-size-base !important;
+  @include screen-tablet{
+    font-size: $m-font-size-base !important;
+  }
+}
+
+.text-md {
+  font-size: $font-size-md !important;
+  @include screen-tablet{
+    font-size: $m-font-size-md !important;
+  }
+}
+
+.text-lg {
+  font-size: $font-size-lg !important;
+  @include screen-tablet{
+    font-size: $m-font-size-lg !important;
+  }
+}
+
+.text-xl {
+  font-size: $font-size-xl !important;
+  @include screen-tablet{
+    font-size: $m-font-size-xl !important;
+  }
+}
+
+.text-xxl {
+  font-size: $font-size-xxl !important;
+  @include screen-tablet{
+    font-size: $m-font-size-xxl !important;
+  }
+}
+
+small {
+  font-size: $font-size-sm;
+  color: $font-size-sm-color;
+  font-weight: $font-size-sm-weight;
+  @include screen-tablet{
+    font-size: $m-font-size-sm !important;
+  }
+}
+
+micro {
+  font-size: $font-size-xs;
+  color: $font-size-xs-color;
+  font-weight: $font-size-xs-weight;
+  @include screen-tablet{
+    font-size: $m-font-size-xs !important;
+  }
+}
+
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+  color: $display1-color;
+}
+
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+  color: $display2-color;
+}
+
+//Light
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Light.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Light.woff?v=2.137") format("woff");
+//     font-weight: 300;
+//     font-style: normal;
+// }
+
+// // Regular
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Regular.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Regular.woff?v=2.137") format("woff");
+//     font-weight: 400;
+//     font-style: normal; }
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Regular.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Regular.woff?v=2.137") format("woff");
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// // Medium
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Medium.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Medium.woff?v=2.137") format("woff");
+//     font-weight: 500;
+//     font-style: normal;
+// }
+
+// //Bold
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Bold.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Bold.woff?v=2.137") format("woff");
+//     font-weight: 600;
+//     font-style: normal;
+// }
+// @font-face {
+//     font-family: Roboto;
+//     src: url("../../fonts/roboto/Roboto-Bold.woff2?v=2.137") format("woff2"), url("../../fonts/roboto/Roboto-Bold.woff?v=2.137") format("woff");
+//     font-weight: bold;
+//     font-style: normal;
+// }

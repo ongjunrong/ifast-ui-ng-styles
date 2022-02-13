@@ -1,0 +1,115 @@
+.ant-upload {
+    color: $body-color;
+
+    &.ant-upload-select-picture-card {
+        width: $upload-picture-size;
+        height: $upload-picture-size;
+        border: 1px dashed $border-color;
+        border-radius: $border-radius;
+        background-color: $upload-picture-bg;
+        margin-right: $upload-picture-gutter;
+        margin-bottom: $upload-picture-gutter;
+        
+        &:hover {
+            border-color: $upload-theme-color
+        }
+    }
+
+    &.ant-upload-drag {
+        border: 1px dashed $border-color;
+        border-radius: $border-radius;
+        padding: 30px 0;
+        background: $upload-picture-bg;
+
+        &:not(.ant-upload-disabled) {
+            &:hover {
+                border-color: $upload-theme-color;
+            }
+        }
+
+        p.ant-upload-drag-icon {
+
+            .anticon {
+                color: $upload-theme-color;
+            }
+        }
+        
+        p.ant-upload-text {
+            color: $upload-text-color;
+        }
+
+        p.ant-upload-hint {
+            color:  $upload-hint-color;
+        }
+    }
+}
+
+
+.ant-upload-list {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $body-color;
+}
+.ant-upload-list-picture,
+.ant-upload-list-picture-card {
+
+    .ant-upload-list-item {
+        padding: 8px;
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
+    }
+
+    .ant-upload-list-item-thumbnail {
+
+        img {
+            display: block;
+            overflow: hidden;
+        }
+    }
+}
+
+.ant-upload-list-picture-card {
+
+    .ant-upload-list-item {
+        width: $upload-picture-size;
+        height: $upload-picture-size;
+        margin-right: $upload-picture-gutter;
+        margin-bottom: $upload-picture-gutter;
+    }
+}
+
+.ant-upload-list-item {
+    &:hover {
+        .ant-upload-list-item-info {
+            background-color: $upload-list-hover;
+        }
+    }
+
+    .anticon-close {
+        color: $body-color;
+    }
+}
+
+.ant-upload-list-item-error {
+    .ant-upload-list-item-name,
+    [class*=anticon-] {
+        color: $brand-alert;
+    }
+}
+
+.upload-list-inline {
+
+    .ant-upload-list-item {
+        float: left;
+        width: 200px;
+        margin-right: 8px;
+      }
+}
+
+.ant-upload {
+    
+    .ant-upload-drag { 
+        height: 180px; 
+    }
+}

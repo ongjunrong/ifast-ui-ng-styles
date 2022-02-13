@@ -1,0 +1,39 @@
+
+
+img {
+    vertical-align: middle;
+}
+
+[role="button"] {
+    cursor: pointer;
+}
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+hr {
+    border: 0px;
+    border-bottom: 1px solid $border-color;
+}
+
+.list-unstyled {
+    list-style-type: none !important;
+    padding-left: 0px;
+}
+
+:focus {
+    outline: none;
+}

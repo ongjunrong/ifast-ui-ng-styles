@@ -1,0 +1,64 @@
+.ant-message {
+    font-family: $font-family-sans-serif;
+    font-size: $message-font-size;
+    line-height: $line-height-base;
+    color: $body-color;
+    position: fixed;
+    z-index: $zindex-sticky;
+    width: 100%;
+    top: 1rem;
+
+    .anticon {
+        font-size: $message-font-size;
+    }
+
+    @include screen-tablet {
+        z-index: $zindex-popover;
+    }
+}
+
+.ant-message-notice-content {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0;
+}
+
+.ant-message-custom-content {
+    padding: $message-padding-x $message-padding-y;
+    border-radius: $message-border-radius;
+}
+
+$message-loop: (
+  ant-message-success $state-success-text,
+  ant-message-info $state-info-text,
+  ant-message-warning $state-warning-text,
+  ant-message-error $state-danger-text
+);
+
+.ant-message-loading {
+    background: $white;
+    .anticon {
+        color: $state-info-text;
+    }
+}
+
+@if $enable-message-background {
+    @each $message in $message-loop {
+        .#{nth($message, 1)} {
+            background: #{nth($message, 2)};    
+            color: $white;
+            .anticon {
+                color: $white
+            }
+        }
+    } 
+}
+@else {
+    @each $message in $message-loop {
+        .#{nth($message, 1)} {
+            background: $white;            
+            .anticon {
+                color: #{nth($message, 2)};
+            }
+        }
+    }    
+}

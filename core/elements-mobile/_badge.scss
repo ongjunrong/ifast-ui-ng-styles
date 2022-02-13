@@ -1,0 +1,97 @@
+.am-badge {
+    position: relative;
+    display: inline-block;
+    line-height: $line-height-base;
+    vertical-align: middle;
+
+    a {
+        color: $white;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.am-badge-dot {
+    position: absolute;
+    transform: translateX(-50%);
+    transform-origin: 0 center;
+    top: -4px;
+    height: $badge-dot-size;
+    width: $badge-dot-size;
+    border-radius: 100%;
+    background-color: $badge-count-bg;
+    z-index: 10;
+}
+
+.am-badge-dot-large {
+    height: $badge-dot-size * 1.5;
+    width: $badge-dot-size * 1.5;
+}
+
+
+.am-badge-corner {
+    width: 5 * $m-h-spacing-lg;
+    padding: 0.5 * $m-h-spacing-lg;
+    position: absolute;
+    right: -2 * $m-h-spacing-lg;
+    top: 0.5 * $m-h-spacing-lg;
+    background-color: $badge-count-bg;
+    color: $white;
+    white-space: nowrap;
+    transform: rotate(45deg);
+    text-align: center;
+    font-size: $m-icon-size-xxs;
+}
+
+.am-badge-corner-wrapper {
+    overflow: hidden;
+}
+
+.am-badge-text {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    top: -6px;
+    height: $m-icon-size-xs;
+    line-height: $m-icon-size-xs;
+    min-width:  $m-icon-size-xs /2;
+    border-radius: $border-radius-lg;
+    padding: 0 5px;
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $white;
+    background-color: $badge-count-bg;
+    transform: translateX(-45%);
+    transform-origin: -10% center;
+    z-index: 10;
+}
+
+.am-badge-not-a-wrapper   {
+
+    .am-badge-dot,
+    .am-badge-text {
+        top: auto;
+        display: block;
+        position: relative;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.am-badge-hot {
+    .am-badge-text {
+        background-color: $badge-count-bg;
+    }
+}
+
+.special-badge .am-badge {
+    transform: rotate(45deg);
+    transform-origin: right bottom;
+    right: 0px;
+    top: 13px;
+    width: 50px;
+}

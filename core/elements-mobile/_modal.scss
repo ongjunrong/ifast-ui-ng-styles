@@ -1,0 +1,317 @@
+@import './mixin';
+
+$modalPrefixClass: am-modal;
+
+@mixin button-common {
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: $brand-primary;
+  font-size: $m-modal-btn-font-size;
+  height: $m-modal-btn-height;
+  line-height: $m-modal-btn-height !important;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 0px;
+  border: 0px;
+}
+
+.#{$modalPrefixClass} {
+  position: relative;
+  &:not(.#{$modalPrefixClass}-transparent):not(.#{$modalPrefixClass}-popup) {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: $zindex-modal;
+    background: $modal-mask;
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &-wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: $zindex-modal;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // fixed a layer issue with animated Tabs in the x5 kernel browser
+    transform: translateZ(1px);
+    &-popup {
+      display: block;
+    }
+  }
+
+  &-transparent {
+    width: 270px;
+    .#{$modalPrefixClass}-content {
+      border-radius: $border-radius-lg;
+      padding-top: $m-v-spacing-lg;
+
+      .#{$modalPrefixClass}-body {
+        padding: 0 $m-h-spacing-lg $m-v-spacing-lg;
+      }
+    }
+  }
+
+  &-popup {
+    position: fixed;
+    left: 0;
+    width: 100%;
+
+    &-slide-down {
+      top: 0;
+    }
+
+    &-slide-up {
+      bottom: 0;
+    }
+
+    .#{$modalPrefixClass}-content {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  &-title {
+    margin: 0;
+    font-size: $font-size-md;
+    line-height: $line-height-base;
+    color: $body-color;
+    text-align: center;
+  }
+
+  &-header {
+    padding: $m-v-spacing-sm $m-h-spacing-lg $m-v-spacing-lg;
+  }
+
+  &-content {
+    position: relative;
+    background-color: $white;
+    border: 0;
+    background-clip: padding-box;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    > div:first-child {
+      color: $body-color;
+    }
+  }
+
+  &-close {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    right: $m-h-spacing-lg;
+    z-index: 999;
+    height: $m-icon-size-sm;
+    width: $m-icon-size-sm;
+
+    &-x {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include encoded-svg-background('modal_delete');
+    }
+  }
+
+  &-body {
+    font-size: $font-size-base + 1px;
+    color: $black-5;
+    height: 100%;
+    line-height: $line-height-base;
+    overflow: auto;
+  }
+
+}
+
+.#{$modalPrefixClass} {
+
+  &-button-group-h {
+    position: relative;
+    @include hairline('top');
+    display: flex;
+
+    .#{$modalPrefixClass}-button {
+      -webkit-touch-callout: none;
+      flex: 1;
+      @include button-common();
+
+      &:first-child {
+        color: $black-6;
+      }
+      &:last-child {
+        position: relative;
+        @include hairline('left');
+      }
+    }
+  }
+
+  &-button-group-v {
+    .#{$modalPrefixClass}-button {
+      @include button-common();
+      -webkit-touch-callout: none;
+      display: block;
+      position: relative;
+      @include hairline('top');
+      border-bottom: 0px;
+    }
+  }
+
+  &-button-active {
+    background-color: $btn-default-hover-bg;
+  }
+
+  &-input-container {
+    margin-top: $m-v-spacing-md;
+    @include hairline('all');
+  }
+  &-input {
+    height: 36px;
+    line-height: $line-height-base;
+
+    &:nth-child(2) {
+      position: relative;
+      @include hairline('top');
+    }
+    input {
+      position: relative;
+      border: 0;
+      width: 98%;
+      height: 34px;
+      top: 1PX;
+      box-sizing: border-box;  // maybe not need it ?
+
+      margin: 0;
+      &::placeholder {
+        font-size: $font-size-base;
+        color: #ccc;
+        padding-left: $m-h-spacing-md;
+      }
+    }
+  }
+
+  &.#{$modalPrefixClass}-transparent.#{$modalPrefixClass}-android {
+    .#{$modalPrefixClass}-content {
+      border-radius: 0;
+
+      .#{$modalPrefixClass}-header {
+        padding: $m-v-spacing-md 24px 12px;
+
+        .#{$modalPrefixClass}-title {
+          text-align: left;
+          font-size: 21px;
+          color: $body-color;
+        }
+      }
+
+      .#{$modalPrefixClass}-body {
+        color: $body-color;
+        text-align: left;
+        padding: 0 24px $m-v-spacing-lg;
+
+        .#{$modalPrefixClass}-input-container {
+          @include hairline-remove('all');
+          @include hairline('bottom');
+          .#{$modalPrefixClass}-input {
+            &:first-child {
+              @include hairline-remove('top');
+            }
+          }
+        }
+      }
+
+      .#{$modalPrefixClass}-footer {
+        padding-bottom: 2 * $m-v-spacing-sm;
+
+        .#{$modalPrefixClass}-button-group-h {
+          overflow: hidden;
+          @include hairline-remove('top');
+          justify-content: flex-end;
+          padding: 0 2 * $m-v-spacing-sm;
+
+          .#{$modalPrefixClass}-button {
+            flex: initial;
+            margin-left: 3px;
+            padding: 0 $m-h-spacing-lg;
+            height: 48px;
+            box-sizing: border-box;
+
+            &:first-child {
+              color: #777;
+            }
+            &:last-child {
+              @include hairline-remove('left');
+            }
+          }
+        }
+
+        .#{$modalPrefixClass}-button-group-v.#{$modalPrefixClass}-button-group-normal {
+          display: flex;
+          justify-content: flex-end;
+          overflow: hidden;
+          padding: 0 2 * $m-v-spacing-sm;
+
+          .#{$modalPrefixClass}-button {
+            @include hairline-remove('top');
+            padding: 0 $m-h-spacing-lg;
+            margin-left: 3px;
+            height: 48px;
+            box-sizing: border-box;
+          }
+        }
+        .#{$modalPrefixClass}-button-group-operation {
+          .#{$modalPrefixClass}-button {
+            text-align: start;
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+  }
+  &#{$modalPrefixClass}-operation {
+    .#{$modalPrefixClass}-content {
+      border-radius: $border-radius-lg;
+      height: auto;
+      padding-top: 0;
+
+      .#{$modalPrefixClass}-body {
+        padding: 0!important;
+      }
+
+      .#{$modalPrefixClass}-button {
+        color: $body-color;
+        text-align: left;
+        padding-left: $m-h-spacing-lg;
+      }
+    }
+  }
+
+  &-alert-content,
+  &-propmt-content {
+    zoom: 1;
+    overflow: hidden;
+  }
+}

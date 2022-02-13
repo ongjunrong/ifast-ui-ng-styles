@@ -1,0 +1,25 @@
+.ant-tree li span.ant-tree-switcher.ant-tree-switcher_open {
+  &:after {
+    content: "";
+  }
+}
+
+.ant-tree {
+  li {
+    span {
+      &.ant-tree-switcher {
+        &.ant-tree-switcher_open {
+          &:after {
+            content: "";
+          }
+        }
+
+        &.ant-tree-switcher_close {
+          &:after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}
